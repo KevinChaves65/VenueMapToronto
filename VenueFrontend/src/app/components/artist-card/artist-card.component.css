@@ -1,0 +1,15 @@
+.artist-card {
+  max-width: 500px;
+  max-height: 650px;
+}
+
+.artist-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+mat-card-image {
+  border-radius: 4px;
+  object-fit: cover;
+}

@@ -1,0 +1,31 @@
+<mat-dialog-content>
+  <mat-card class="artist-card">
+    <mat-card-header>
+      <div mat-card-avatar class="artist-avatar">
+        <img [src]="artist.bioPicUrl" alt="{{ artist.name }} photo" />
+      </div>
+      <mat-card-title>{{ artist.name }}</mat-card-title>
+      <mat-card-subtitle>{{ artist.genre }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image [src]="artist.bioPicUrl" alt="{{ artist.name }}" />
+
+    <mat-card-content>
+      <p>{{ artist.description }}</p>
+    </mat-card-content>
+    <mat-card-content *ngIf="events.length > 0">
+  <h4>Appears in:</h4>
+  <ul>
+    <li *ngFor="let event of events">
+      {{ event.name }} – {{ event.Date }}
+    </li>
+  </ul>
+</mat-card-content>
+
+    <mat-card-actions>
+      <a [href]="artist.artistLink" target="_blank" mat-button color="primary">
+        Visit Profile
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</mat-dialog-content>

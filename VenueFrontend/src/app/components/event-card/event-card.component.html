@@ -18,7 +18,11 @@
 
     <p><strong>Line-up:</strong></p>
     <ul>
-      <li *ngFor="let artist of event.lineUp">{{ artist }}</li>
+      <li *ngFor="let artist of event.lineUp">
+        <button class="link-button" (click)="openArtistModal(artist)">
+          {{ artist }}
+        </button>
+      </li>
     </ul>
   </div>
 </div>

@@ -40,4 +40,15 @@
     margin-bottom: 1rem;
     object-fit: cover;
   }
+  .link-button {
+    background: none;
+    border: none;
+    color: #66ccff;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+  }
+  .link-button:hover {
+    text-decoration: underline;
+  }
   

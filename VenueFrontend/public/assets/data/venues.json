@@ -45,10 +45,10 @@
                 },
                 {
                     "E_id": 4,
-                    "name": "Rap Night",
+                    "name": "Rap Night 2",
                     "genre": "Hip-Hop",
                     "lineUp": ["KOTO?","Jon Green","Dre Da King"],
-                    "Date": "May 10th",
+                    "Date": "May 20th",
                     "Description": "Yap yap yap",
                     "Eimage":"assets/images/eventposter.png"
                 }
