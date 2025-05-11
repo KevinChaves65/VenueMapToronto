@@ -6,7 +6,8 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'kitchen.settings')
+    sys.path.append(os.path.join(os.path.dirname(__file__), 'kitchen'))
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'kitchen.config.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

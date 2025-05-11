@@ -1,2 +1,4 @@
-settings.py
+kitchen/config/settings.py
 .env
+venv
+db.sqlite3
