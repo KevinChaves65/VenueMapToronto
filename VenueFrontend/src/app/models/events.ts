@@ -1,5 +1,5 @@
 export interface Event {
-    E_id: number;
+    E_id: string;
     name: string;
     genre: string;
     lineUp: string[];

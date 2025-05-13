@@ -1,85 +1,31 @@
 {
     "venues": [
         {
-            "V_id": 1,
+            "V_id": "1",
             "venue": "Hardluck Bar",
             "imageUrl": "assets/images/hardluck.png",
             "address": "772A Dundas St West",
-            "distance": 2.3,
-            "events":[
-                {
-                    "E_id": 1,
-                    "name": "Rocky Jockey Jam",
-                    "genre": "Rock",
-                    "lineUp": ["Full Deck","Nerima","Untimely Dosage"],
-                    "Date": "May 8th",
-                    "Description": "Yap yap yap",
-                    "Eimage":"assets/images/eventposter.png"
-                },
-                {
-                    "E_id": 2,
-                    "name": "Rap Night",
-                    "genre": "Hip-Hop",
-                    "lineUp": ["KOTO?","Jon Green","Dre Da King"],
-                    "Date": "May 10th",
-                    "Description": "Yap yap yap",
-                    "Eimage":"assets/images/eventposter.png"
-                }
-            ]
+            "latitude": 43.652150,
+            "longitude": -79.407552,
+            "eventIds":["1","2"]
         },
         {
-            "id": 2,
+            "V_id": "2",
             "venue": "Drake Underground",
             "imageUrl": "assets/images/drake.jpg",
-            "address": "772A Dundas St West",
-            "distance": 4,
-            "events":[
-                {
-                    "E_id": 3,
-                    "name": "Example",
-                    "genre": "Folk",
-                    "lineUp": ["Full Deck","Nerima","Untimely Dosage"],
-                    "Date": "May 8th",
-                    "Description": "Yap yap yap",
-                    "Eimage":"assets/images/eventposter.png"
-                },
-                {
-                    "E_id": 4,
-                    "name": "Rap Night 2",
-                    "genre": "Hip-Hop",
-                    "lineUp": ["KOTO?","Jon Green","Dre Da King"],
-                    "Date": "May 20th",
-                    "Description": "Yap yap yap",
-                    "Eimage":"assets/images/eventposter.png"
-                }
-            ]
+            "address": "1150 Queen St W",
+            "latitude": 43.643291,
+            "longitude": -79.424629,
+            "eventIds":["3","4"]
         },
         {
-            "id": 3,
+            "V_id": "3",
             "venue": "Monarch Tavern",
             "imageUrl": "assets/images/monarch.jpg",
-            "address": "772A Dundas St West",
-            "distance": 3.2,
-            "events":[
-                {
-                    "E_id": 5,
-                    "name": "Rock Jam",
-                    "genre": "Rock",
-                    "lineUp": ["Full Deck","Nerima","Untimely Dosage"],
-                    "Date": "May 8th",
-                    "Description": "Yap yap yap",
-                    "Eimage":"assets/images/eventposter.png"
-                },
-                {
-                    "E_id": 6,
-                    "name": "Rap Night",
-                    "genre": "Hip-Hop",
-                    "lineUp": ["KOTO?","Jon Green","Dre Da King"],
-                    "Date": "May 10th",
-                    "Description": "Yap yap yap",
-                    "Eimage":"assets/images/eventposter.png"
-                }
-            ]
+            "address": "12 Clinton St",
+            "latitude": 43.654030,
+            "longitude": -79.413681,
+            "eventIds":["5","6"]
         }
 
     ]

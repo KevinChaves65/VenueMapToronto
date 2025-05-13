@@ -5,24 +5,29 @@
       <h3>{{ venue.venue }}</h3>
       
       <p>{{ venue.address }}</p>
-      <p>{{ venue.distance }} km away</p>
+      <p> km away</p>
   
-      <button class="toggle-button" (click)="toggleEvents()">
-        {{ showEvents ? 'Hide Events' : 'View Events' }}
-      </button>
-  
-      <div *ngIf="showEvents" class="event-detail-card">
-        <h4>Events at {{ venue.venue }}</h4>
-        
-        <div class="event" *ngFor="let event of venue.events">
+      <!-- Toggle Button -->
+    <button class="toggle-button" (click)="toggleEvents()">
+      {{ showEvents ? 'Hide Events' : 'View Events' }}
+    </button>
+
+    <!-- Event List Section -->
+    <div *ngIf="showEvents" class="event-detail-card">
+      <h4>Events at {{ venue.venue }}</h4>
+      <div *ngIf="eventsLoaded">
+        <div class="event" *ngFor="let event of events">
           <p><strong>{{ event.name }}</strong> ({{ event.genre }})</p>
           <p>{{ event.Date }}</p>
           <p><em>Line-up:</em> {{ event.lineUp.join(', ') }}</p>
-          <button class="more-info-btn" (click)="openEvent(event)">Link</button>
+          <button class="more-info-btn" (click)="openEvent(event)">More Info</button>
           <hr />
         </div>
       </div>
-      <app-event-card
+    </div>
+
+    <!-- Event Modal -->
+    <app-event-card
       *ngIf="selectedEvent"
       [event]="selectedEvent"
       [fallbackImageUrl]="venue.imageUrl"

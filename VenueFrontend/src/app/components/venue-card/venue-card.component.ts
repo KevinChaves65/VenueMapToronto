@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Venue } from '../../models/venues';
 import { Event } from '../../models/events';
+import { EventService } from '../../services/event.service';
 import { EventCardComponent } from '../event-card/event-card.component';
-import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-venue-card',
@@ -15,11 +15,24 @@ import { RouterModule } from '@angular/router';
 })
 export class VenueCardComponent  {
   @Input() venue!: Venue;
+
+  events: Event[] = [];
   showEvents: boolean = false;
   selectedEvent: Event | null = null;
+  eventsLoaded = false;
 
-  toggleEvents() {
+  constructor(private eventService: EventService) {}
+
+  toggleEvents(): void {
     this.showEvents = !this.showEvents;
+
+    if (this.showEvents && !this.eventsLoaded && this.venue?.eventIds?.length) {
+      this.eventService.getEventsByIds(this.venue.eventIds).subscribe(events => {
+        this.events = events;
+        this.eventsLoaded = true;
+      });
+    }
+
     this.selectedEvent = null;
   }
   openEvent(event: Event): void {
