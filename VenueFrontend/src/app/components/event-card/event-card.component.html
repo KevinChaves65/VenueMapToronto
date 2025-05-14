@@ -2,7 +2,7 @@
 
 <div class="event-modal">
   <div class="full-event-card">
-    <button class="close-button" (click)="close()">×</button>
+    <button class="close-button" (click)="close()">x</button>
 
     <h3>{{ event.name }}</h3>
 
@@ -15,7 +15,11 @@
     <p><strong>Genre:</strong> {{ event.genre }}</p>
     <p><strong>Date:</strong> {{ event.Date }}</p>
     <p><strong>Description:</strong> {{ event.Description }}</p>
-
+    <mat-card-actions *ngIf="event.TicketUrl">
+    <a [href]="event.TicketUrl" target="_blank">
+    <button mat-raised-button color="accent">Buy Tickets</button>
+  </a>
+</mat-card-actions>
     <p><strong>Line-up:</strong></p>
     <ul>
       <li *ngFor="let artist of event.lineUp">

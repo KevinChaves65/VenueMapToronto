@@ -5,9 +5,10 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ArtistService } from '../../services/artist.service';
 import { ArtistCardComponent } from '../artist-card/artist-card.component';
 import { Artist } from '../../models/artists';
+import { MatCardActions } from '@angular/material/card';
 @Component({
   selector: 'app-event-card',
-  imports: [CommonModule],
+  imports: [CommonModule, MatCardActions],
   templateUrl: './event-card.component.html',
   styleUrl: './event-card.component.css'
 })

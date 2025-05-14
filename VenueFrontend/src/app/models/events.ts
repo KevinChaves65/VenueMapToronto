@@ -5,5 +5,6 @@ export interface Event {
     lineUp: string[];
     Date: string;
     Description: string;
-    Eimage:string
+    Eimage:string;
+    TicketUrl:string;
   }

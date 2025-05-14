@@ -16,7 +16,8 @@
         "lineUp": ["KOTO?","Jon Green","Dre Da King"],
         "Date": "May 10th",
         "Description": "Yap yap yap",
-        "Eimage":"assets/images/eventposter.png"
+        "Eimage":"assets/images/eventposter.png",
+        "TicketUrl":"https://www.youtube.com/watch?v=PDJLvF1dUek"
     },
     {
         "E_id": "3",
@@ -25,7 +26,8 @@
         "lineUp": ["Full Deck","Nerima","Untimely Dosage"],
         "Date": "May 8th",
         "Description": "Yap yap yap",
-        "Eimage":"assets/images/eventposter.png"
+        "Eimage":"assets/images/eventposter.png",
+        "TicketUrl":"https://www.youtube.com/watch?v=PDJLvF1dUek"
     },
     {
         "E_id": "4",
@@ -34,7 +36,8 @@
         "lineUp": ["KOTO?","Jon Green","Dre Da King"],
         "Date": "May 20th",
         "Description": "Yap yap yap",
-        "Eimage":"assets/images/eventposter.png"
+        "Eimage":"assets/images/eventposter.png",
+        "TicketUrl":"https://www.youtube.com/watch?v=PDJLvF1dUek"
     },
     {
         "E_id": "5",
@@ -43,7 +46,8 @@
         "lineUp": ["Full Deck","Nerima","Untimely Dosage"],
         "Date": "May 8th",
         "Description": "Yap yap yap",
-        "Eimage":"assets/images/eventposter.png"
+        "Eimage":"assets/images/eventposter.png",
+        "TicketUrl":"https://www.youtube.com/watch?v=PDJLvF1dUek"
     },
     {
         "E_id": "6",
@@ -52,7 +56,8 @@
         "lineUp": ["KOTO?","Jon Green","Dre Da King"],
         "Date": "May 10th",
         "Description": "Yap yap yap",
-        "Eimage":"assets/images/eventposter.png"
+        "Eimage":"assets/images/eventposter.png",
+        "TicketUrl":"https://www.youtube.com/watch?v=PDJLvF1dUek"
     }
 ]
 }

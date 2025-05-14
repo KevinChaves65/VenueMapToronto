@@ -5,14 +5,12 @@
       <h3>{{ venue.venue }}</h3>
       
       <p>{{ venue.address }}</p>
-      <p> km away</p>
+      <p> km away</p> <!-- distance from user to venue add here-->>
   
-      <!-- Toggle Button -->
     <button class="toggle-button" (click)="toggleEvents()">
       {{ showEvents ? 'Hide Events' : 'View Events' }}
     </button>
 
-    <!-- Event List Section -->
     <div *ngIf="showEvents" class="event-detail-card">
       <h4>Events at {{ venue.venue }}</h4>
       <div *ngIf="eventsLoaded">
@@ -26,7 +24,6 @@
       </div>
     </div>
 
-    <!-- Event Modal -->
     <app-event-card
       *ngIf="selectedEvent"
       [event]="selectedEvent"
