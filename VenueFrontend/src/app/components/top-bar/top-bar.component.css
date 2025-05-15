@@ -1,0 +1,71 @@
+.top-bar {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+  z-index: 1;
+}
+
+mat-icon{
+    color: white;
+}
+
+.panel {
+  position: absolute;
+  top: 50px;
+  right: 1rem;
+  background: rgba(40, 40, 40, 0.95);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  z-index: 100;
+  max-width: 300px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.panel a {
+  color: #90caf9;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.panel a:hover {
+  text-decoration: underline;
+}
+
+.social-links-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.link-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.link-buttons img {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(1);
+  transition: filter 0.2s;
+}
+
+.link-buttons img:hover {
+  filter: grayscale(0);
+}

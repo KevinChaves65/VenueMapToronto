@@ -1,0 +1,53 @@
+<div class="top-bar">
+  <button mat-icon-button (click)="togglePanel('social')" aria-label="Social">
+    <mat-icon>contact_page</mat-icon>
+  </button>
+
+  <button mat-icon-button (click)="togglePanel('settings')" aria-label="Settings">
+    <mat-icon>settings</mat-icon>
+  </button>
+
+  <button mat-icon-button (click)="togglePanel('account')" aria-label="Account">
+    <mat-icon>person</mat-icon>
+  </button>
+</div>
+
+<!-- Toggle panels -->
+<div class="panel" *ngIf="activePanel === 'social'">
+  <div class="social-links-column">
+    <p>About us: Yap yap</p>
+    <!-- Kev's links -->
+    <div class="profile-links">
+      <span class="profile-name">Kev's Links</span>
+      <div class="link-buttons">
+        <a href="https://github.com/KevinChaves65" target="_blank" aria-label="Kevin GitHub">
+          <img src="assets/icons/github.svg" alt="GitHub" />
+        </a>
+        <a href="https://www.linkedin.com/in/kevin-chaves65/" target="_blank" aria-label="Kevin LinkedIn">
+          <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Dan's links -->
+    <div class="profile-links">
+      <span class="profile-name">Dan's Links</span>
+      <div class="link-buttons">
+        <a href="https://github.com/d-arceo" target="_blank" aria-label="Dan GitHub">
+          <img src="assets/icons/github.svg" alt="GitHub" />
+        </a>
+        <a href="https://www.linkedin.com/in/danielarceo/" target="_blank" aria-label="Dan LinkedIn">
+          <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" *ngIf="activePanel === 'settings'">
+  <p>Theme toggle and future settings go here.</p>
+</div>
+
+<div class="panel" *ngIf="activePanel === 'account'">
+  <p>Account panel — log in / profile info here.</p>
+</div>
