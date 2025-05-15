@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Artist } from '../../models/artists';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
@@ -15,8 +15,8 @@ import { ArtistService } from '../../services/artist.service';
   styleUrl: './artist-card.component.css'
 })
 export class ArtistCardComponent implements OnInit {
+  @Input() artist!: Artist;
   events: Event[] = [];
-  artist!: Artist;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { artist: Artist },

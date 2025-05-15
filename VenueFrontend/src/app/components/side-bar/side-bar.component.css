@@ -22,7 +22,12 @@
   flex-direction: column;
   gap: 0.5rem;
 }
-
+.view-toggle-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
 
 .filter-section {
   padding: 1rem 0 0.5rem 0;
