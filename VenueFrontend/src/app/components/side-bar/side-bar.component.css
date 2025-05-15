@@ -50,12 +50,31 @@
     gap: 1rem;
   }
   .venue-list::-webkit-scrollbar {
-    width: 6px;
+    width: 3px;
   }
   .venue-list::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
+    background-color: rgba(46, 40, 40, 0.3);
+    border-radius: 1px;
   }
   .venue-list::-webkit-scrollbar-track {
     background: transparent;
   }
+.sidebar-container.collapsed {
+  width: 40px;
+}
+
+.collapse-button {
+  position: fixed;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: #2c2c2c;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.collapse-button:hover {
+  background: #444;
+}

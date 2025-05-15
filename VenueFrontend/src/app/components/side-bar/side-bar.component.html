@@ -1,5 +1,13 @@
-<div class="sidebar-container">
-    <!-- Header -->
+<div class="sidebar-container" [ngClass]="{ 'collapsed': isCollapsed }">
+  <button 
+    mat-icon-button 
+    class="collapse-button"
+    [ngClass]="{ 'collapsed-position': isCollapsed }"
+    (click)="toggleSidebar()" 
+    aria-label="Toggle Sidebar">
+    <mat-icon>{{ isCollapsed ? 'chevron_right' : 'chevron_left' }}</mat-icon>
+  </button>
+  <div *ngIf="!isCollapsed">
   <div class="sidebar-header">
     <div class="sidebar-title">
     <h2>Toronto Shows</h2>
@@ -13,3 +21,4 @@
         <app-venue-card *ngFor="let venue of venues" [venue]="venue"></app-venue-card>
     </div>
   </div>
+</div>
