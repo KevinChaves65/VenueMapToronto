@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Venue } from '../../models/venues';
-import { Event } from '../../models/events';
-import { EventService } from '../../services/event.service';
+import { Venue } from '../../../models/venues';
+import { Event } from '../../../models/events';
+import { EventService } from '../../../services/event.service';
 import { EventCardComponent } from '../event-card/event-card.component';
 
 

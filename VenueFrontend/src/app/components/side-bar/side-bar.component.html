@@ -13,23 +13,19 @@
     <h2>Toronto Shows</h2>
   </div>
   <div class="view-toggle-buttons">
-    <button mat-button (click)="setView('venues')">Venues</button>
-    <button mat-button (click)="setView('events')">Events</button>
-    <button mat-button (click)="setView('artists')">Artists</button>
-  </div>
+  <button mat-button (click)="setView('venues')">Venues</button>
+  <button mat-button (click)="setView('events')">All Events</button>
+  <button mat-button (click)="setView('artists')">All Artists</button>
 </div>
-  <div class="filter-section">
-    <h4 class="section-heading">Filter Venues</h4>
-   <!-- Add more stuff here reguarding filters -->
+</div>
 <div *ngIf="viewMode === 'venues'" class="venue-list">
   <app-venue-card *ngFor="let venue of venues" [venue]="venue"></app-venue-card>
 </div>
 
-<div *ngIf="viewMode === 'events'" class="event-list">
-  <app-event-card *ngFor="let event of allEvents" [event]="event" [fallbackImageUrl]="'assets/images/default.png'"></app-event-card>
+<div *ngIf="viewMode === 'events'" class="event-list-wrapper">
+  <app-event-list></app-event-list>
 </div>
 
 <div *ngIf="viewMode === 'artists'" class="artist-list">
-  <app-artist-card *ngFor="let artist of allArtists" [artist]="artist"></app-artist-card>
 </div>
 </div>

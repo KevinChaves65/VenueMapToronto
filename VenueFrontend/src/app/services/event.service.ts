@@ -10,7 +10,7 @@ export class EventService {
 
   constructor(private http: HttpClient) {}
 
-  getAllEvents(): Observable<Event[]> {
+  getEvents(): Observable<Event[]> {
     if (this.cachedEvents.length > 0) {
       return of(this.cachedEvents);
     }
@@ -23,19 +23,19 @@ export class EventService {
     );
   }
   getEventById(id: string): Observable<Event | null> {
-    return this.getAllEvents().pipe(
+    return this.getEvents().pipe(
       map(events => events.find(event => event.E_id === id) || null)
     );
   }
 
   getEventsByIds(ids: string[]): Observable<Event[]> {
-    return this.getAllEvents().pipe(
+    return this.getEvents().pipe(
       map(events => events.filter(event => ids.includes(event.E_id)))
     );
   }
 
   getEventBySlug(slug: string): Observable<Event | null> {
-    return this.getAllEvents().pipe(
+    return this.getEvents().pipe(
       map(events => events.find(event =>
         event.name.toLowerCase().replace(/\s+/g, '-') === slug.toLowerCase()
       ) || null)

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VenueCardComponent } from '../venue-card/venue-card.component';
+import { VenueCardComponent } from '../side-bar-collection/venue-card/venue-card.component';
 import { VenueService } from '../../services/venue.service';
 import { EventService } from '../../services/event.service';
 import { ArtistService } from '../../services/artist.service';
@@ -8,11 +8,12 @@ import { Venue } from '../../models/venues';
 import { Event } from '../../models/events';
 import { Artist } from '../../models/artists';
 import { MatIcon } from '@angular/material/icon';
-import { ArtistCardComponent } from "../artist-card/artist-card.component";
-import { EventCardComponent } from "../event-card/event-card.component";
+import { ArtistCardComponent } from "../side-bar-collection/artist-card/artist-card.component";
+import { EventCardComponent } from "../side-bar-collection/event-card/event-card.component";
+import { EventListComponent } from '../side-bar-collection/event-list/event-list.component';
 @Component({
   selector: 'app-side-bar',
-  imports: [CommonModule, VenueCardComponent, MatIcon, ArtistCardComponent, EventCardComponent],
+  imports: [CommonModule, VenueCardComponent, MatIcon, ArtistCardComponent, EventCardComponent, EventListComponent],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })
@@ -49,7 +50,7 @@ export class SideBarComponent implements OnInit {
   }
 
   if (mode === 'events' && !this.eventsLoaded) {
-    this.eventService.getAllEvents().subscribe(e => {
+    this.eventService.getEvents().subscribe(e => {
       this.events = e;
       this.eventsLoaded = true;
     });

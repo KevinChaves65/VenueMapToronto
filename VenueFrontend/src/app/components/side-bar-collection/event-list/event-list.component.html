@@ -1,0 +1,42 @@
+<div class="event-list-container">
+  <h3>All Events</h3>
+
+  <div class="event-filters">
+    <input 
+      [(ngModel)]="searchTerm" 
+      (ngModelChange)="applyFilters()" 
+      placeholder="Search events..." />
+
+    <select 
+      [(ngModel)]="selectedGenre" 
+      (ngModelChange)="applyFilters()">
+      <option value="">All Genres</option>
+      <option *ngFor="let genre of genres">{{ genre }}</option>
+    </select>
+  </div>
+
+  <div class="event-card-list">
+    <div 
+      *ngFor="let event of filteredEvents"
+      class="event-card-listing">
+      
+      <img [src]="event.Eimage" alt="{{ event.name }}" class="event-thumbnail" />
+
+      <div class="event-info">
+        <h4>{{ event.name }}</h4>
+        <p><strong>Genre:</strong> {{ event.genre }}</p>
+        <p><strong>Date:</strong> {{ event.Date }}</p>
+
+        <button (click)="openEvent(event)">More Info</button>
+        <p *ngIf="event.TicketUrl">
+          <a [href]="event.TicketUrl" target="_blank" class="ticket-link">Buy Tickets</a>
+        </p>
+      </div>
+    </div>
+    <app-event-card
+      *ngIf="selectedEvent"
+      [event]="selectedEvent"
+      [close]="closeEvent">
+    </app-event-card>
+  </div>
+</div>

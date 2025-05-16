@@ -24,7 +24,7 @@ export class ArtistService {
   }
 
   getEventsforArtist(artist: Artist): Observable<Event[]>{
-    return this.eventService.getAllEvents().pipe(
+    return this.eventService.getEvents().pipe(
       map(events =>
         events.filter(event => event.lineUp.includes(artist.name))
       )

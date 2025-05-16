@@ -1,10 +1,10 @@
 import { Component, Inject, Input, Optional} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Event } from '../../models/events';
+import { Event } from '../../../models/events';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { ArtistService } from '../../services/artist.service';
+import { ArtistService } from '../../../services/artist.service';
 import { ArtistCardComponent } from '../artist-card/artist-card.component';
-import { Artist } from '../../models/artists';
+import { Artist } from '../../../models/artists';
 import { MatCardActions } from '@angular/material/card';
 @Component({
   selector: 'app-event-card',
