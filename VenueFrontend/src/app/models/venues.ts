@@ -5,4 +5,6 @@
     address: string;
     distance: number;
     eventIds: string[];
+    latitude: number,
+    longitude: number,
   }
