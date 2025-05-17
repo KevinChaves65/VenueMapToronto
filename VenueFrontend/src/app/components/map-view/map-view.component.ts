@@ -64,7 +64,7 @@ export class MapViewComponent implements OnInit {
           }
         });
 
-        // Click: show popup with venue name
+        // Click: popup
         this.map.on('click', 'venue-dots', (e) => {
           const feature = e.features?.[0] as Feature<Point>;
           const geometry = feature.geometry as Point;
