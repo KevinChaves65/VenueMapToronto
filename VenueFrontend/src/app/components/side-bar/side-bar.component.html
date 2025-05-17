@@ -14,8 +14,8 @@
   </div>
   <div class="view-toggle-buttons">
   <button mat-button (click)="setView('venues')">Venues</button>
-  <button mat-button (click)="setView('events')">All Events</button>
-  <button mat-button (click)="setView('artists')">All Artists</button>
+  <button mat-button (click)="setView('events')">Events</button>
+  <button mat-button (click)="setView('artists')">Artists</button>
 </div>
 </div>
 <div *ngIf="viewMode === 'venues'" class="venue-list">
@@ -27,5 +27,6 @@
 </div>
 
 <div *ngIf="viewMode === 'artists'" class="artist-list">
+  <app-artist-list></app-artist-list>
 </div>
 </div>

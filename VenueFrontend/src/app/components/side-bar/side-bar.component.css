@@ -1,17 +1,23 @@
-.sidebar-container {
-    width: 350px;
-    height: 100vh;
-    background: rgba(20, 20, 20, 0.85);
-    backdrop-filter: blur(6px);
-    padding: 1rem;
-    color: white;
-    display: flex;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-    flex-direction: column;
-    gap: 1rem;
-    overflow-y: auto;
-    z-index: 100;
-  }
+.sidebar-container  {
+  width: 350px; 
+  min-width: 375px;
+  max-width: 375px;
+  height: 100vh;
+  overflow-x: hidden;
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 1rem;
+  color: white;
+  display: flex;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  z-index: 100;
+  flex-shrink: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
   .sidebar-title {
   text-align: center;
   width: 100%;

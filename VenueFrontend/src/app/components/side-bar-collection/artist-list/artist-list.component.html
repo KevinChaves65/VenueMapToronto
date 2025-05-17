@@ -1,1 +1,34 @@
-<p>artist-list works!</p>
+<div class="artist-list-container">
+  <h3>All Artists</h3>
+
+  <!-- Filters -->
+  <div class="artist-filters">
+    <input 
+      [(ngModel)]="searchTerm" 
+      (ngModelChange)="applyFilters()" 
+      placeholder="Search artists..." />
+
+    <select 
+      [(ngModel)]="selectedGenre" 
+      (ngModelChange)="applyFilters()">
+      <option value="">All Genres</option>
+      <option *ngFor="let genre of genres">{{ genre }}</option>
+    </select>
+  </div>
+
+  <!-- Artist Cards -->
+  <div class="artist-card-list">
+    <div 
+      *ngFor="let artist of filteredArtists"
+      class="artist-card-listing">
+
+      <img [src]="artist.bioPicUrl || 'assets/images/default-artist.png'" alt="{{ artist.name }}" class="artist-thumbnail" />
+
+      <div class="artist-info">
+        <h4>{{ artist.name }}</h4>
+        <p><strong>Genre:</strong> {{ artist.genre }}</p>
+        <p *ngIf="artist.description">{{ artist.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

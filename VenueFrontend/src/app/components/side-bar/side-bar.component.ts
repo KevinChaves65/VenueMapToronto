@@ -8,12 +8,11 @@ import { Venue } from '../../models/venues';
 import { Event } from '../../models/events';
 import { Artist } from '../../models/artists';
 import { MatIcon } from '@angular/material/icon';
-import { ArtistCardComponent } from "../side-bar-collection/artist-card/artist-card.component";
-import { EventCardComponent } from "../side-bar-collection/event-card/event-card.component";
 import { EventListComponent } from '../side-bar-collection/event-list/event-list.component';
+import { ArtistListComponent } from "../side-bar-collection/artist-list/artist-list.component";
 @Component({
   selector: 'app-side-bar',
-  imports: [CommonModule, VenueCardComponent, MatIcon, ArtistCardComponent, EventCardComponent, EventListComponent],
+  imports: [CommonModule, VenueCardComponent, MatIcon,EventListComponent, ArtistListComponent],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })
@@ -67,7 +66,6 @@ export class SideBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.venueService.getVenues().subscribe((data) => {
-      console.log('Fetched venues:', data);
       this.venues = data;
     });
 }

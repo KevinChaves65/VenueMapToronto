@@ -1,6 +1,8 @@
 .artist-card {
   max-width: 500px;
+  min-width: 350px;
   max-height: 650px;
+  min-width: 400px;
 }
 
 .artist-avatar img {
