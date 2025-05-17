@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../enviroments/enviroments';
 import { Venue } from '../../models/venues';
 import { VenueService } from '../../services/venue.service';
+import { Feature, Point } from 'geojson';
 import * as mapboxgl from 'mapbox-gl';
 import "mapbox-gl/dist/mapbox-gl.css";
 @Component({
@@ -39,19 +40,54 @@ export class MapViewComponent implements OnInit {
   this.map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
 });
   }
-  addVenueDot(): void {
-  this.venues.forEach(venue => {
-    new mapboxgl.Marker({ color: 'limegreen' }) 
-      .setLngLat([venue.longitude, venue.latitude])
-      .addTo(this.map);
-  });
-}
     ngOnInit(): void {
     this.initMap();
 
-    this.venueService.getVenues().subscribe(data => {
-      this.venues = data;
-      this.addVenueDot();
+    this.map.on('load', () => {
+      this.venueService.getVenuesGeoJSON().subscribe(geojson => {
+        // Add venue GeoJSON source
+        this.map.addSource('venues', {
+          type: 'geojson',
+          data: geojson
+        });
+
+        // Add green circle layer
+        this.map.addLayer({
+          id: 'venue-dots',
+          type: 'circle',
+          source: 'venues',
+          paint: {
+            'circle-radius': 6,
+            'circle-color': '#00FF00',
+            'circle-stroke-width': 2,
+            'circle-stroke-color': '#ffffff'
+          }
+        });
+
+        // Click: show popup with venue name
+        this.map.on('click', 'venue-dots', (e) => {
+          const feature = e.features?.[0] as Feature<Point>;
+          const geometry = feature.geometry as Point;
+          const coordinates = geometry.coordinates as [number, number];
+          const name = feature.properties?.['name'];
+
+          if (coordinates && name) {
+            new mapboxgl.Popup()
+              .setLngLat(coordinates)
+              .setHTML(`<strong>${name}</strong>`)
+              .addTo(this.map);
+          }
+        });
+
+        // Change on hover
+        this.map.on('mouseenter', 'venue-dots', () => {
+          this.map.getCanvas().style.cursor = 'pointer';
+        });
+
+        this.map.on('mouseleave', 'venue-dots', () => {
+          this.map.getCanvas().style.cursor = '';
+        });
+      });
     });
   }
 }
