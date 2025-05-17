@@ -1,7 +1,6 @@
 .sidebar-container  {
   width: 350px; 
-  min-width: 375px;
-  max-width: 375px;
+  width: 375px;
   height: 100vh;
   overflow-x: hidden;
   background: rgba(20, 20, 20, 0.85);

@@ -1,8 +1,17 @@
-.map {
+#map {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.venue-dot {
+  width: 20px !important;
+  height: 20px !important;
+  background-color: limegreen!important;
+  border-radius: 50%!important;
+  border: 2px solid white!important;
+  opacity: 1 !important;
+  z-index: 9999!important;
 }
