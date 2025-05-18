@@ -1,6 +1,6 @@
 <div id="map"></div>
 <app-venue-popup
-  *ngIf="selectedVenue"
+  *ngIf="selectedVenue && popupPosition"
   [venue]="selectedVenue"
   [position]="popupPosition"
   (close)="selectedVenue = null" />
