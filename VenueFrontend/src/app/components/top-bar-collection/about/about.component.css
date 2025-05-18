@@ -1,0 +1,33 @@
+.social-links-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.link-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.link-buttons img {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(1);
+  transition: filter 0.2s;
+}
+
+.link-buttons img:hover {
+  filter: grayscale(0);
+}
