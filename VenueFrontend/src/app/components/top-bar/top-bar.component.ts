@@ -25,7 +25,6 @@ constructor(private eRef: ElementRef) {}
       this.activePanel = null;
     }
   }
-  
 
   ngOnDestroy(): void {
     // optional cleanup if needed later

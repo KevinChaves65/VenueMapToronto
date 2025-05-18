@@ -1,0 +1,25 @@
+.settings-panel {
+  color: white;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+select, input[type="checkbox"] {
+  background: rgb(255, 255, 255);
+  color: rgb(217, 207, 207);
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+option {
+  color: rgb(233, 226, 226);
+  background-color: #5f5b5b;
+}

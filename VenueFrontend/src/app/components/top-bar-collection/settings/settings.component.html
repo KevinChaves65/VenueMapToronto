@@ -1,1 +1,30 @@
-<p>settings works!</p>
+<div class="settings-panel">
+  <h3>Settings</h3>
+
+  <!-- Theme Toggle -->
+  <div class="setting-group">
+    <label for="themeToggle">Theme:</label>
+    <select id="themeToggle" [(ngModel)]="selectedTheme">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </div>
+
+  <!-- Map Style Selector -->
+  <div class="setting-group">
+    <label for="mapStyle">Map Style:</label>
+    <select id="mapStyle" [(ngModel)]="selectedMapStyle">
+      <option value="dark">Dark</option>
+      <option value="streets">Streets</option>
+      <option value="satellite">Satellite</option>
+    </select>
+  </div>
+
+  <!-- Sidebar Preference -->
+  <div class="setting-group">
+    <label>
+      <input type="checkbox" [(ngModel)]="autoCollapseSidebar" />
+      Auto-collapse sidebar on load
+    </label>
+  </div>
+</div>

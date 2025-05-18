@@ -1,1 +1,16 @@
-<p>profile works!</p>
+<div class="account-panel">
+  <h3>Account</h3>
+
+  <!-- User Info -->
+  <div class="account-info">
+    <p><strong>Logged in as:</strong> Guest</p>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="account-actions">
+    <button mat-button color="primary" (click)="signIn()">Sign In</button>
+    <button mat-button color="accent" (click)="viewUserEvents()">Your Events</button>
+    <button mat-button color="warn" (click)="clearLocalData()">Clear Local Data</button>
+  </div>
+</div>
+

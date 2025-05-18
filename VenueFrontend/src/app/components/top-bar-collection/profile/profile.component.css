@@ -1,0 +1,19 @@
+.account-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.account-info p {
+  margin: 0;
+  text-align: center;
+}
+
+.account-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
