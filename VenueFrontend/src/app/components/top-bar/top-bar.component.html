@@ -1,4 +1,5 @@
 <div class="top-bar">
+    <div class="icon-row">
   <button mat-icon-button (click)="togglePanel('social')" aria-label="Social">
     <mat-icon>contact_page</mat-icon>
   </button>
@@ -45,9 +46,10 @@
 </div>
 
 <div class="panel" *ngIf="activePanel === 'settings'">
-  <p>Theme toggle and future settings go here.</p>
+  <p>Theme: <button>Light</button> / <button>Dark</button></p>
 </div>
 
 <div class="panel" *ngIf="activePanel === 'account'">
   <p>Account panel — log in / profile info here.</p>
+</div>
 </div>
