@@ -1,7 +1,6 @@
 <div class="artist-list-container">
   <h3>All Artists</h3>
 
-  <!-- Filters -->
   <div class="artist-filters">
     <input 
       [(ngModel)]="searchTerm" 
@@ -16,7 +15,6 @@
     </select>
   </div>
 
-  <!-- Artist Cards -->
   <div class="artist-card-list">
     <div 
       *ngFor="let artist of filteredArtists"
