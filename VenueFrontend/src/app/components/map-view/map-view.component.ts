@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../enviroments/enviroments';
+import { CommonModule } from '@angular/common';
 import { Venue } from '../../models/venues';
 import { VenueService } from '../../services/venue.service';
 import { Feature, Point } from 'geojson';
+import { VenuePopupComponent } from '../venue-popup/venue-popup.component';
 import * as mapboxgl from 'mapbox-gl';
 import "mapbox-gl/dist/mapbox-gl.css";
 @Component({
   selector: 'app-map-view',
-  imports: [],
+  imports: [VenuePopupComponent, CommonModule],
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.css']
 })
@@ -15,6 +17,8 @@ export class MapViewComponent implements OnInit {
 
   map!: mapboxgl.Map;
   venues: Venue [] = [];
+  selectedVenue: any = null;
+  popupPosition: { x: number, y: number } | null = null;
 
   constructor(private venueService: VenueService) {}
 
@@ -67,16 +71,13 @@ export class MapViewComponent implements OnInit {
         // Click: popup
         this.map.on('click', 'venue-dots', (e) => {
           const feature = e.features?.[0] as Feature<Point>;
-          const geometry = feature.geometry as Point;
-          const coordinates = geometry.coordinates as [number, number];
-          const name = feature.properties?.['name'];
+          const props = feature.properties;
+          const coordinates = feature.geometry.coordinates as [number, number];
 
-          if (coordinates && name) {
-            new mapboxgl.Popup()
-              .setLngLat(coordinates)
-              .setHTML(`<strong>${name}</strong>`)
-              .addTo(this.map);
-          }
+          const screenPoint = this.map.project(coordinates);
+
+          this.selectedVenue = props;
+          this.popupPosition = { x: screenPoint.x, y: screenPoint.y };
         });
 
         // Change on hover

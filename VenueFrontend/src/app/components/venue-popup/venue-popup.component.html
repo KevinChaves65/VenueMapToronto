@@ -1,0 +1,10 @@
+<div class="popup-card" [ngStyle]="{
+  left: position?.x + 'px',
+  top: position?.y + 'px'
+}">
+  <button class="close-btn" (click)="close.emit()">×</button>
+  <img [src]="venue.imageUrl" class="popup-image" />
+  <h4>{{ venue.venue }}</h4>
+  <p>{{ venue.address }}</p>
+  <button mat-button (click)="viewEvents()">View Events</button>
+</div>

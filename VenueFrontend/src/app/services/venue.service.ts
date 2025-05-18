@@ -27,9 +27,11 @@ import { Venue } from '../models/venues';
             coordinates: [venue.longitude, venue.latitude]
           },
           properties: {
-            id: venue.V_id,
-            name: venue.venue,
-            address: venue.address
+          V_id: venue.V_id,
+          venue: venue.venue,
+          imageUrl: venue.imageUrl,
+          address: venue.address,
+          eventIds: venue.eventIds
           }
         }))
       }))
