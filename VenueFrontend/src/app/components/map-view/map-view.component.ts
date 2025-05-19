@@ -75,8 +75,9 @@ export class MapViewComponent implements OnInit {
             'circle-stroke-color': '#ffffff'
           }
         });
-///creating points and card
-        this.map.on('click', 'venue-dots', (e) => {
+        let hovered = false;
+        this.map.on('mouseenter', 'venue-dots', (e) => {
+          hovered = true;
           const feature = e.features?.[0] as Feature<Point>;
           const props = feature.properties;
           const coordinates = feature.geometry.coordinates as [number, number];
@@ -84,6 +85,14 @@ export class MapViewComponent implements OnInit {
           this.selectedVenue = props;
         this.selectedLngLat = coordinates;
         this.updatePopupPosition();
+        });
+        this.map.on('click', (e) => {
+          if (!hovered) {
+            this.selectedVenue = null;
+            this.selectedLngLat = null;
+            this.popupPosition = null;
+          }
+          hovered = false;
         });
 
         this.map.on('move', () => this.updatePopupPosition());

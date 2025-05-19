@@ -7,22 +7,35 @@
   max-width: 220px;
   max-height: 380px;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  scroll-behavior: smooth;
   z-index: 1000;
   transform: translate(-50%, -100%); /* position above marker */
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  animation: fadeSlideIn 0.3s ease-out forwards;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 
+}
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -120%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1);
+  }
 }
 
 .popup-card img {
-  width: 100%;
+  width: 75%;
   height: auto;
   border-radius: 8px;
   object-fit: cover;
-  margin-bottom: 0.5rem;
-  padding: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .popup-card h4 {
@@ -39,16 +52,23 @@
 
 .popup-button {
   margin-top: 0.75rem;
-  background-color: #1db954;
+  background-color: #1c39cb;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
+  transition: background 0.3s ease;
   cursor: pointer;
 }
 
 .popup-button:hover {
   background-color: #1ed760;
+}
+.popup-card:hover {
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.7),
+    0 0 14px rgba(0, 255, 120, 0.5);
+  transform: translate(-50%, -100%) scale(1.01);
 }
 
 .close-btn {
@@ -60,5 +80,5 @@
   color: white;
   font-size: 1.2rem;
   cursor: pointer;
-  padding: 2rem;
+  padding: 0.25rem;
 }
