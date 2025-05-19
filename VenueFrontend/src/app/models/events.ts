@@ -7,4 +7,5 @@ export interface Event {
     Description: string;
     Eimage:string;
     TicketUrl:string;
+    VenueId: string;
   }

@@ -5,6 +5,8 @@ import { EventService } from '../../../services/event.service';
 import { EventCardComponent } from '../event-card/event-card.component';
 import { FormsModule } from '@angular/forms';
 import { Venue } from '../../../models/venues';
+import { VenueService } from '../../../services/venue.service';
+import { MapService } from '../../../services/map.service';
 
 @Component({
   standalone: true,
@@ -23,7 +25,10 @@ export class EventListComponent implements OnInit {
   selectedEvent: Event | null = null;
   genres: string[] = [];
 
-  constructor(private eventService: EventService) {}
+  constructor(
+  private eventService: EventService, 
+  private mapService: MapService,
+  private venueService: VenueService) {}
 
   ngOnInit(): void {
     this.eventService.getEvents().subscribe(events => {
@@ -46,4 +51,10 @@ export class EventListComponent implements OnInit {
   closeEvent = (): void => {
     this.selectedEvent = null;
   };
+  centerMapOnEvent(event: Event): void {
+  const coords = this.venueService.getVenueCoordinatesById(event.VenueId);
+  if (coords) {
+    this.mapService.flyTo(coords[0], coords[1]);
+  }
+}
 }
