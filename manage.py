@@ -2,6 +2,13 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from dotenv import load_dotenv
+
+# Load the .env file
+load_dotenv()
+
+# Access Eventbrite API Key
+EVENTBRTIE_API_KEY = os.getenv("EVENTBRITE_API_KEY")
 
 
 def main():
