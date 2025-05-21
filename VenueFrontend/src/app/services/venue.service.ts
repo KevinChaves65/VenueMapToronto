@@ -8,14 +8,30 @@ import { Venue } from '../models/venues';
   })
   export class VenueService {
     private venuesUrl = 'assets/data/venues.json';
-  
+    private cachedVenues: Venue[] = [];
     constructor(private http: HttpClient) {}
   
     getVenues(): Observable<Venue[]> {
-      return this.http.get<{ venues: Venue[] }>(this.venuesUrl).pipe(
-        map(response => response.venues)
-      );
-    }
+  if (this.cachedVenues.length > 0) {
+    return new Observable(observer => {
+      observer.next(this.cachedVenues);
+      observer.complete();
+    });
+  }
+
+  return this.http.get<{ venues: Venue[] }>(this.venuesUrl).pipe(
+    map(response => {
+      this.cachedVenues = response.venues;
+      return this.cachedVenues;
+    })
+  );
+}
+    getVenueCoordinatesById(venueId: string): [number, number] | null {
+  const venue = this.cachedVenues.find(v => v.V_id === venueId);
+  return venue && venue.latitude !== undefined && venue.longitude !== undefined
+    ? [venue.longitude, venue.latitude]
+    : null;
+}
     getVenuesGeoJSON(): Observable<any> {
     return this.getVenues().pipe(
       map(venues => ({

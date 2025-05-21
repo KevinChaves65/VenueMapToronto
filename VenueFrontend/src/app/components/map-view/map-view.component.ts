@@ -3,6 +3,7 @@ import { environment } from '../../../enviroments/enviroments';
 import { CommonModule } from '@angular/common';
 import { Venue } from '../../models/venues';
 import { VenueService } from '../../services/venue.service';
+import { MapService } from '../../services/map.service';
 import { Feature, Point } from 'geojson';
 import { VenuePopupComponent } from '../venue-popup/venue-popup.component';
 import * as mapboxgl from 'mapbox-gl';
@@ -22,7 +23,7 @@ export class MapViewComponent implements OnInit {
   selectedLngLat: [number, number] | null = null;
   popupPosition: { x: number, y: number } | null = null;
 
-  constructor(private venueService: VenueService) {}
+  constructor(private venueService: VenueService, private mapService: MapService) {}
 
   initMap(): void {
     this.map = new mapboxgl.Map({
@@ -36,6 +37,7 @@ export class MapViewComponent implements OnInit {
     });
 
     this.map.on('load', () => {
+      this.mapService.setMap(this.map);
       this.map.addSource('mapbox-dem', {
         type: 'raster-dem',
         url: 'mapbox://mapbox.terrain-rgb',
@@ -107,5 +109,24 @@ export class MapViewComponent implements OnInit {
         this.map.getCanvas().style.cursor = '';
       });
     });
+   this.map.on('dblclick', (e) => {
+  const features = this.map.queryRenderedFeatures(e.point, {
+    layers: ['venue-dots']
+  });
+
+  if (features.length > 0) {
+    const venueFeature = features[0] as Feature<Point>;
+    const geometry = venueFeature.geometry as Point;
+    const coordinates = geometry.coordinates as [number, number];
+
+    this.map.flyTo({
+      center: coordinates,
+      zoom: this.map.getZoom() + 5,
+      speed: 1.2,
+      curve: 1.42,
+      essential: true
+    });
+  }
+});
   }
 }

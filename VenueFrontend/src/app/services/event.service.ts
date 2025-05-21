@@ -41,5 +41,4 @@ export class EventService {
       ) || null)
     );
   }
-  /// gotta make a function to get long and lat
 }
