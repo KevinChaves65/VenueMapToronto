@@ -109,5 +109,24 @@ export class MapViewComponent implements OnInit {
         this.map.getCanvas().style.cursor = '';
       });
     });
+   this.map.on('dblclick', (e) => {
+  const features = this.map.queryRenderedFeatures(e.point, {
+    layers: ['venue-dots']
+  });
+
+  if (features.length > 0) {
+    const venueFeature = features[0] as Feature<Point>;
+    const geometry = venueFeature.geometry as Point;
+    const coordinates = geometry.coordinates as [number, number];
+
+    this.map.flyTo({
+      center: coordinates,
+      zoom: this.map.getZoom() + 5,
+      speed: 1.2,
+      curve: 1.42,
+      essential: true
+    });
+  }
+});
   }
 }
