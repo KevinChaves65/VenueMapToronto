@@ -82,3 +82,17 @@
   cursor: pointer;
   padding: 0.25rem;
 }
+
+.event-list {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.event-item {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}

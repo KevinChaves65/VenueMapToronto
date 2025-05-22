@@ -6,5 +6,22 @@
   <img [src]="venue.imageUrl" class="popup-image" />
   <h4>{{ venue.venue }}</h4>
   <p>{{ venue.address }}</p>
-  <button mat-button (click)="viewEvents()">View Events</button>
+   <button mat-button (click)="viewEvents()">
+    {{ showEvents ? 'Hide Events' : 'View Events' }}
+  </button>
+
+  <div *ngIf="showEvents && events.length > 0" class="event-list">
+    <div *ngFor="let event of events" class="event-item">
+      <p><strong>{{ event.name }}</strong> ({{ event.genre }})</p>
+      <p>{{ event.Date }}</p>
+      <p><em>Line-up:</em> {{ event.lineUp.join(', ') }}</p>
+      <button class="more-info-btn" (click)="openEvent(event)">More Info</button>
+    </div>
+  </div>
 </div>
+<app-event-card
+  *ngIf="selectedEvent"
+  [event]="selectedEvent"
+  [fallbackImageUrl]="venue.imageUrl"
+  [close]="closeEvent">
+</app-event-card>
