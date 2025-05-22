@@ -19,6 +19,7 @@
 </div>
 </div>
 <div *ngIf="viewMode === 'venues'" class="venue-list">
+  <h3>Venues</h3>
   <app-venue-card 
     *ngFor="let venue of venues" 
     [venue]="venue" 
