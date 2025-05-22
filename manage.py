@@ -7,8 +7,13 @@ from dotenv import load_dotenv
 # Load the .env file
 load_dotenv()
 
+<<<<<<< HEAD
 # Access Eventbrite Private Token
 EVENTBRITE_PRIVATE_TOKEN = os.getenv("EVENTBRITE_PRIVATE_TOKEN")
+=======
+# Access Eventbrite API Key
+EVENTBRTIE_API_KEY = os.getenv("EVENTBRITE_API_KEY")
+>>>>>>> origin/main
 
 
 def main():

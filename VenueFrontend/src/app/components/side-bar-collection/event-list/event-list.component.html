@@ -18,7 +18,7 @@
   <div class="event-card-list">
     <div 
       *ngFor="let event of filteredEvents"
-      class="event-card-listing">
+      class="interactive-card event-card-listing" (click)="centerMapOnEvent(event)">
       
       <img [src]="event.Eimage" alt="{{ event.name }}" class="event-thumbnail" />
 

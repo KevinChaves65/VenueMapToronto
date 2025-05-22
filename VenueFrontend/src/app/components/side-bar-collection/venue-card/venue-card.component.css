@@ -37,4 +37,18 @@
     border-radius: 6px;
     border: 1px solid #444;
   }
+  .interactive-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.03); /* subtle tint */
+}
+
+.interactive-card:hover {
+  transform: scale(1.02);
+  box-shadow: 
+    0 4px 12px rgba(0, 255, 120, 0.25), /* soft glow */
+    0 0 8px rgba(0, 255, 120, 0.15);    /* outer glow */
+  background-color: rgba(0, 255, 120, 0.05);
+}
   
