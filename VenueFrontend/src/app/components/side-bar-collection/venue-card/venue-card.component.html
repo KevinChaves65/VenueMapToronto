@@ -18,18 +18,11 @@
           <p><strong>{{ event.name }}</strong> ({{ event.genre }})</p>
           <p>{{ event.Date }}</p>
           <p><em>Line-up:</em> {{ event.lineUp.join(', ') }}</p>
-          <button class="more-info-btn" (click)="openEvent(event)">More Info</button>
+           <button class="more-info-btn" (click)="openEvent(event); $event.stopPropagation()">More Info</button>
           <hr />
         </div>
       </div>
     </div>
-
-    <app-event-card
-      *ngIf="selectedEvent"
-      [event]="selectedEvent"
-      [fallbackImageUrl]="venue.imageUrl"
-      [close]="closeEvent">
-    </app-event-card>
     </div>
   </div>
   

@@ -19,7 +19,11 @@
 </div>
 </div>
 <div *ngIf="viewMode === 'venues'" class="venue-list">
-  <app-venue-card *ngFor="let venue of venues" [venue]="venue"></app-venue-card>
+  <app-venue-card 
+    *ngFor="let venue of venues" 
+    [venue]="venue" 
+    (eventSelected)="handleEventSelected($event)">
+  </app-venue-card>
 </div>
 
 <div *ngIf="viewMode === 'events'" class="event-list-wrapper">

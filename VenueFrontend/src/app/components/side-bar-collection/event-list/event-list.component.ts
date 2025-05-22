@@ -2,7 +2,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Event } from '../../../models/events';
 import { EventService } from '../../../services/event.service';
-import { EventCardComponent } from '../event-card/event-card.component';
 import { FormsModule } from '@angular/forms';
 import { Venue } from '../../../models/venues';
 import { VenueService } from '../../../services/venue.service';
@@ -11,7 +10,7 @@ import { MapService } from '../../../services/map.service';
 @Component({
   standalone: true,
   selector: 'app-event-list',
-  imports: [CommonModule, EventCardComponent, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './event-list.component.html',
   styleUrl: './event-list.component.css'
 })
