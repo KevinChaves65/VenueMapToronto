@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Event } from '../../../models/events';
 import { EventService } from '../../../services/event.service';
@@ -24,6 +24,7 @@ export class EventListComponent implements OnInit {
   selectedGenre = '';
   selectedEvent: Event | null = null;
   genres: string[] = [];
+  @Output() eventSelected = new EventEmitter<Event>();
 
   constructor(
   private eventService: EventService, 
@@ -45,12 +46,13 @@ export class EventListComponent implements OnInit {
     );
   }
   openEvent(event: Event): void {
-    this.selectedEvent = event;
-  }
+  this.eventSelected.emit(event);
+}
 
-  closeEvent = (): void => {
-    this.selectedEvent = null;
-  };
+closeEvent = (): void => {
+  this.selectedEvent = null;
+  document.body.style.overflow = '';
+};
   centerMapOnEvent(event: Event): void {
   const coords = this.venueService.getVenueCoordinatesById(event.VenueId);
   if (coords) {

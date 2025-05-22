@@ -23,10 +23,16 @@
 </div>
 
 <div *ngIf="viewMode === 'events'" class="event-list-wrapper">
-  <app-event-list></app-event-list>
+  <app-event-list (eventSelected)="handleEventSelected($event)"></app-event-list>
 </div>
 
 <div *ngIf="viewMode === 'artists'" class="artist-list">
   <app-artist-list></app-artist-list>
 </div>
 </div>
+</div>
+<app-event-card
+  *ngIf="selectedEvent"
+  [event]="selectedEvent"
+  [close]="closeSelectedEvent">
+</app-event-card>

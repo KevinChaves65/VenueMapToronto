@@ -1,54 +1,81 @@
+/* Backdrop: dims the background */
 .event-modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.65);
-    z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1099;
+}
+
+/* Modal wrapper: centers the modal */
+.event-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1100;
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 120, 0.3);
+  padding: 1.5rem;
+  color: #fff;
+  animation: fadeSlideIn 0.25s ease-out forwards;
+}
+
+/* Entry animation */
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.95);
   }
-  
-  .event-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    max-width: 250px;
-    width: 90%;
-    background: #1e1e1e;
-    border-radius: 12px;
-    box-shadow: 0 0 20px #000;
-    padding: 1.5rem;
-    color: #fff;
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
-  
-  .close-button {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.75rem;
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    color: #fff;
-    cursor: pointer;
-  }
-  .event-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    object-fit: cover;
-  }
-  .link-button {
-    background: none;
-    border: none;
-    color: #66ccff;
-    cursor: pointer;
-    padding: 0;
-    font: inherit;
-  }
-  .link-button:hover {
-    text-decoration: underline;
-  }
-  
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Event poster */
+.event-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Button to artist modal */
+.link-button {
+  background: none;
+  border: none;
+  color: #66ccff;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+.link-button:hover {
+  text-decoration: underline;
+}
+
+/* Ticket button */
+mat-card-actions {
+  margin-top: 1rem;
+  text-align: center;
+}

@@ -1,6 +1,7 @@
 <div class="event-list-container">
-  <h3>All Events</h3>
+  <h3>Events</h3>
 
+  <!-- Filters -->
   <div class="event-filters">
     <input 
       [(ngModel)]="searchTerm" 
@@ -15,28 +16,25 @@
     </select>
   </div>
 
-  <div class="event-card-list">
+  <!-- Event Cards -->
+  <div class="event-list">
     <div 
       *ngFor="let event of filteredEvents"
-      class="interactive-card event-card-listing" (click)="centerMapOnEvent(event)">
+      class="event-card"
+      (click)="centerMapOnEvent(event)">
       
       <img [src]="event.Eimage" alt="{{ event.name }}" class="event-thumbnail" />
 
-      <div class="event-info">
-        <h4>{{ event.name }}</h4>
+      <div class="event-details">
+        <h4 class="event-title">{{ event.name }}</h4>
         <p><strong>Genre:</strong> {{ event.genre }}</p>
         <p><strong>Date:</strong> {{ event.Date }}</p>
 
-        <button (click)="openEvent(event)">More Info</button>
+        <button class="event-action-button" (click)="openEvent(event); $event.stopPropagation()">More Info</button>
+        
         <p *ngIf="event.TicketUrl">
-          <a [href]="event.TicketUrl" target="_blank" class="ticket-link">Buy Tickets</a>
+          <a [href]="event.TicketUrl" target="_blank" class="event-ticket-link">Buy Tickets</a>
         </p>
       </div>
-    </div>
-    <app-event-card
-      *ngIf="selectedEvent"
-      [event]="selectedEvent"
-      [close]="closeEvent">
-    </app-event-card>
   </div>
 </div>
