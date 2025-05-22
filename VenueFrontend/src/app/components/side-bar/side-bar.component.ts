@@ -10,9 +10,10 @@ import { Artist } from '../../models/artists';
 import { MatIcon } from '@angular/material/icon';
 import { EventListComponent } from '../side-bar-collection/event-list/event-list.component';
 import { ArtistListComponent } from "../side-bar-collection/artist-list/artist-list.component";
+import { EventCardComponent } from "../side-bar-collection/event-card/event-card.component";
 @Component({
   selector: 'app-side-bar',
-  imports: [CommonModule, VenueCardComponent, MatIcon,EventListComponent, ArtistListComponent],
+  imports: [CommonModule, VenueCardComponent, MatIcon, EventListComponent, ArtistListComponent, EventCardComponent],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })
@@ -25,6 +26,7 @@ export class SideBarComponent implements OnInit {
   events: Event[] = [];
   isCollapsed = false;
 
+  selectedEvent: Event | null = null;
   venuesLoaded = false;
   eventsLoaded = false;
   artistsLoaded = false;
@@ -69,5 +71,13 @@ export class SideBarComponent implements OnInit {
       this.venues = data;
     });
 }
+
+handleEventSelected(event: Event): void {
+  this.selectedEvent = event;
+}
+
+closeSelectedEvent = (): void => {
+  this.selectedEvent = null;
+};
 }
 

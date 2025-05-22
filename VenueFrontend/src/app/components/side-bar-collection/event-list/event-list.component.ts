@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Event } from '../../../models/events';
 import { EventService } from '../../../services/event.service';
-import { EventCardComponent } from '../event-card/event-card.component';
 import { FormsModule } from '@angular/forms';
 import { Venue } from '../../../models/venues';
 import { VenueService } from '../../../services/venue.service';
@@ -11,7 +10,7 @@ import { MapService } from '../../../services/map.service';
 @Component({
   standalone: true,
   selector: 'app-event-list',
-  imports: [CommonModule, EventCardComponent, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './event-list.component.html',
   styleUrl: './event-list.component.css'
 })
@@ -24,6 +23,7 @@ export class EventListComponent implements OnInit {
   selectedGenre = '';
   selectedEvent: Event | null = null;
   genres: string[] = [];
+  @Output() eventSelected = new EventEmitter<Event>();
 
   constructor(
   private eventService: EventService, 
@@ -45,12 +45,13 @@ export class EventListComponent implements OnInit {
     );
   }
   openEvent(event: Event): void {
-    this.selectedEvent = event;
-  }
+  this.eventSelected.emit(event);
+}
 
-  closeEvent = (): void => {
-    this.selectedEvent = null;
-  };
+closeEvent = (): void => {
+  this.selectedEvent = null;
+  document.body.style.overflow = '';
+};
   centerMapOnEvent(event: Event): void {
   const coords = this.venueService.getVenueCoordinatesById(event.VenueId);
   if (coords) {

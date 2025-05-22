@@ -1,21 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Venue } from '../../../models/venues';
 import { Event } from '../../../models/events';
 import { EventService } from '../../../services/event.service';
-import { EventCardComponent } from '../event-card/event-card.component';
 import { MapService } from '../../../services/map.service';
 
 
 @Component({
   selector: 'app-venue-card',
   standalone: true,
-  imports: [CommonModule, EventCardComponent],
+  imports: [CommonModule],
   templateUrl: './venue-card.component.html',
   styleUrls: ['./venue-card.component.css']
 })
 export class VenueCardComponent  {
   @Input() venue!: Venue;
+  @Output() eventSelected = new EventEmitter<Event>();
 
   events: Event[] = [];
   showEvents: boolean = false;
@@ -41,7 +41,7 @@ export class VenueCardComponent  {
     this.selectedEvent = null;
   }
   openEvent(event: Event): void {
-    this.selectedEvent = event;
+    this.eventSelected.emit(event);
   }
 
   closeEvent = (): void => {
