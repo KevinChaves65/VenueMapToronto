@@ -4,6 +4,7 @@ import { Venue } from '../../../models/venues';
 import { Event } from '../../../models/events';
 import { EventService } from '../../../services/event.service';
 import { MapService } from '../../../services/map.service';
+import { VenueService } from '../../../services/venue.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class VenueCardComponent  {
   selectedEvent: Event | null = null;
   eventsLoaded = false;
 
-  constructor(private eventService: EventService, private mapService: MapService) {}
+  constructor(private eventService: EventService, private mapService: MapService, private venueService: VenueService) {}
 
   centerMapOnVenue(venue: Venue): void {
   this.mapService.flyTo(venue.longitude, venue.latitude);
