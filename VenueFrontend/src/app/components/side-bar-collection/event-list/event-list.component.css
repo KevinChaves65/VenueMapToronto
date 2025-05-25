@@ -10,8 +10,9 @@
   z-index: 1;
 }
 
-.event-list-container h3 {
-  margin: 0;
+.artist-list-container h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
   font-size: 1.25rem;
   font-weight: 600;
   color: #ffffff;
