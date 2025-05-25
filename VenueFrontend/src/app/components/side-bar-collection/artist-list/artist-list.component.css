@@ -38,10 +38,13 @@
 .artist-card-list {
   flex-grow: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding-right: 0.5rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 .artist-card-listing {
@@ -55,6 +58,8 @@
   color: white;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  width: 100%;
+  max-width: 100%;
 }
 
 .artist-card-listing:hover {
@@ -75,6 +80,5 @@
 .artist-info h4 {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
   max-width: 100%;
 }

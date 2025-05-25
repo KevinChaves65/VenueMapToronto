@@ -1,7 +1,4 @@
-.artist-card {
-  width: 100%;             
-  max-width: 100%;          
-  min-width: 0;            
+.artist-card {    
   height: auto;
   max-height: 100%;          
   box-sizing: border-box;    
