@@ -13,13 +13,27 @@
     <h2>Toronto Shows</h2>
   </div>
   <div class="view-toggle-buttons">
-  <button mat-button (click)="setView('venues')">Venues</button>
-  <button mat-button (click)="setView('events')">Events</button>
-  <button mat-button (click)="setView('artists')">Artists</button>
+  <button 
+    mat-button 
+    [ngClass]="{ 'active-view': viewMode === 'venues' }" 
+    (click)="setView('venues')">
+    Venues
+  </button>
+  <button 
+    mat-button 
+    [ngClass]="{ 'active-view': viewMode === 'events' }" 
+    (click)="setView('events')">
+    Events
+  </button>
+  <button 
+    mat-button 
+    [ngClass]="{ 'active-view': viewMode === 'artists' }" 
+    (click)="setView('artists')">
+    Artists
+  </button>
 </div>
 </div>
 <div *ngIf="viewMode === 'venues'" class="venue-list">
-  <h3>Venues</h3>
   <app-venue-card 
     *ngFor="let venue of venues" 
     [venue]="venue" 
