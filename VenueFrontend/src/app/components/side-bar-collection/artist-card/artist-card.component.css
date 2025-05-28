@@ -1,10 +1,9 @@
-.artist-card {
-  max-width: 500px;
-  min-width: 350px;
-  max-height: 650px;
-  min-width: 400px;
+.artist-card {    
+  height: auto;
+  max-height: 100%;          
+  box-sizing: border-box;    
+  flex-shrink: 0;
 }
-
 .artist-avatar img {
   width: 40px;
   height: 40px;
