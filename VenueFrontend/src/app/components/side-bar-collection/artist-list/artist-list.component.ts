@@ -3,7 +3,8 @@ import { ArtistService } from '../../../services/artist.service';
 import { Artist } from '../../../models/artists';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ArtistCardComponent } from '../artist-card/artist-card.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   standalone: true,
   selector: 'app-artist-list',
@@ -19,7 +20,7 @@ allArtists: Artist[] = [];
   selectedGenre = '';
   genres: string[] = [];
 
-  constructor(private artistService: ArtistService) {}
+  constructor(private artistService: ArtistService, private dialog: MatDialog) {}
 
 ngOnInit(): void {
   this.artistService.getArtists().subscribe(artists => {
@@ -35,5 +36,11 @@ ngOnInit(): void {
       (!this.selectedGenre || artist.genre === this.selectedGenre) &&
       (!this.searchTerm || artist.name.toLowerCase().includes(this.searchTerm.toLowerCase()))
     );
+  }
+  openArtistModal(artist: Artist): void {
+    this.dialog.open(ArtistCardComponent, {
+      width: '500px',
+      data: { artist }
+    });
   }
 }
