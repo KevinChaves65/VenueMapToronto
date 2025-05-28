@@ -32,6 +32,11 @@
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
+.view-toggle-buttons .active-view {
+  background-color: rgba(21, 56, 180, 0.788);
+  color: #ffffff;
+  border-radius: 4px;
+}
 
 .filter-section {
   padding: 1rem 0 0.5rem 0;
