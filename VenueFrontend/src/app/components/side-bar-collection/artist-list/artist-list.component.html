@@ -18,7 +18,8 @@
   <div class="artist-card-list">
     <div 
       *ngFor="let artist of filteredArtists"
-      class="artist-card-listing">
+      class="artist-card-listing"
+      (click)="openArtistModal(artist)">
 
       <img [src]="artist.bioPicUrl || 'assets/images/default-artist.png'" alt="{{ artist.name }}" class="artist-thumbnail" />
 
