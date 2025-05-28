@@ -5,12 +5,9 @@
   height: 100%;
   padding: 1rem;
   color: white;
-  width: 100%;
-  max-width: 100%;
   overflow: hidden;
   position: relative;
   z-index: 1;
-  flex-shrink: 0;
 }
 .artist-filters {
   display: flex;
@@ -30,9 +27,7 @@
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
   font-size: 0.9rem;
-  max-width: 100%;
-  width: 100%;        
-  box-sizing: border-box;
+  min-width: 180px;
 }
 
 .artist-card-list {
