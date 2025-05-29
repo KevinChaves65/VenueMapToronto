@@ -2,10 +2,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.65);
-  z-index: 1099;
+  z-index: 999;
 }
 
 .event-modal {
@@ -13,34 +13,26 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1100;
-  max-width: 400px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: #1e1e1e;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 255, 120, 0.3);
-  padding: 1.5rem;
+  z-index: 1000;
+  max-width: 350px;
+  width: 95%;
+  background: #121212;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #0b5ad9b7;
+  padding: 2rem 1.25rem;
   color: #fff;
-  animation: fadeSlideIn 0.25s ease-out forwards;
+  overflow-y: auto;
+  max-height: 90vh;
 }
-
-@keyframes fadeSlideIn {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -60%) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
+.event-modal h3 {
+  text-align: center;
+  font-size: large;
 }
 
 .close-button {
   position: absolute;
-  top: 0.75rem;
-  right: 1rem;
+  top: 0.5rem;
+  right: 0.75rem;
   background: transparent;
   border: none;
   font-size: 1.5rem;
@@ -48,30 +40,68 @@
   cursor: pointer;
 }
 
-/* poster */
 .event-image {
-  width: 75%;
-  height: 75%;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 12px;
 }
 
-/* Button to artist */
-.link-button {
-  background: none;
-  border: none;
-  color: #66ccff;
-  cursor: pointer;
-  padding: 0;
-  font: inherit;
-}
-.link-button:hover {
-  text-decoration: underline;
+.event-details p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+  line-height: 1.3;
 }
 
-/* Ticket button */
-mat-card-actions {
+.ticket-button-container {
+  margin-top: 1.25rem;
+  text-align: left;
+}
+
+.ticket-button {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  padding: 0.6rem 1.25rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 255, 120, 0.2);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ticket-button:hover {
+  background-color: #117fe6;
+  box-shadow: 0 0 12px rgba(19, 67, 211, 0.598);
+  color: #000;
+}
+
+.ticket-icon {
+  font-size: 20px;
+  vertical-align:middle;
+}
+
+.lineup-section {
   margin-top: 1rem;
-  text-align: center;
+}
+
+.artist-lineup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.artist-pill {
+  background: rgba(0, 255, 120, 0.12);
+  border: 1px solid rgba(8, 95, 226, 0.76);
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: #107fd4;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.artist-pill:hover {
+  background: rgba(0, 255, 110, 0.25);
 }
