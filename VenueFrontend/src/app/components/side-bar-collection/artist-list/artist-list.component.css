@@ -58,10 +58,10 @@
 
 .artist-card-listing:hover {
   transform: scale(1.02);
-  box-shadow: 
-    0 4px 12px rgba(0, 255, 120, 0.25),
-    0 0 8px rgba(0, 255, 120, 0.15);
-  background-color: rgba(0, 255, 120, 0.05);
+  box-shadow:
+    0 4px 12px rgba(0, 162, 255, 0.25),
+    0 0 8px rgba(6, 84, 227, 0.15);
+  background-color: rgba(0, 204, 255, 0.05);
 }
 
 .artist-thumbnail {
