@@ -1,9 +1,7 @@
 <div class="event-modal-backdrop" (click)="close()"></div>
 
 <div class="event-modal">
-  <div class="full-event-card">
-    <button class="close-button" (click)="close()">x</button>
-
+    <button class="close-button" (click)="close()">×</button>
     <h3>{{ event.name }}</h3>
 
     <img
@@ -12,21 +10,29 @@
       class="event-image"
     />
 
-    <p><strong>Genre:</strong> {{ event.genre }}</p>
-    <p><strong>Date:</strong> {{ event.Date }}</p>
-    <p><strong>Description:</strong> {{ event.Description }}</p>
-    <mat-card-actions *ngIf="event.TicketUrl">
-    <a [href]="event.TicketUrl" target="_blank">
-    <button mat-raised-button color="accent">Buy Tickets</button>
-  </a>
-</mat-card-actions>
-    <p><strong>Line-up:</strong></p>
-    <ul>
-      <li *ngFor="let artist of event.lineUp">
-        <button class="link-button" (click)="openArtistModal(artist)">
-          {{ artist }}
-        </button>
-      </li>
-    </ul>
+    <div class="event-details">
+      <p><strong>Genre:</strong> {{ event.genre }}</p>
+      <p><strong>Date:</strong> {{ event.Date }}</p>
+      <p><strong>Description:</strong> {{ event.Description }}</p>
+
+      <div *ngIf="event.TicketUrl" class="ticket-button-container">
+      <a [href]="event.TicketUrl" target="_blank" rel="noopener noreferrer">
+      <button mat-raised-button color="primary" class="ticket-button">
+      <mat-icon class="ticket-icon">local_activity</mat-icon>
+      </button>
+      </a>
+      </div>
+
+      <div *ngIf="event.lineUp.length > 0" class="lineup-section">
+        <p><strong>Line-up:</strong></p>
+        <div class="artist-lineup">
+          <button 
+            *ngFor="let artist of event.lineUp" 
+            class="artist-pill" 
+            (click)="openArtistModal(artist)">
+            {{ artist }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
