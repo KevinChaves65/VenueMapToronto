@@ -11,13 +11,13 @@
   </button>
 
   <div *ngIf="showEvents && events.length > 0" class="event-list">
-    <div *ngFor="let event of events" class="event-item">
-      <p><strong>{{ event.name }}</strong> ({{ event.genre }})</p>
-      <p>{{ event.Date }}</p>
-      <p><em>Line-up:</em> {{ event.lineUp.join(', ') }}</p>
-      <button class="more-info-btn" (click)="openEvent(event)">More Info</button>
-    </div>
+  <div *ngFor="let event of events" class="event-item-card">
+    <h5>{{ event.name }} <span class="genre">({{ event.genre }})</span></h5>
+    <p class="event-date">{{ event.Date }}</p>
+    <p><em>Line-up:</em> {{ event.lineUp.join(', ') }}</p>
+    <button class="more-info-btn" (click)="openEvent(event)">More Info</button>
   </div>
+</div>
 </div>
 <app-event-card
   *ngIf="selectedEvent"

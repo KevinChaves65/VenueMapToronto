@@ -31,22 +31,23 @@
 }
 
 .popup-card img {
-  width: 75%;
-  height: auto;
-  border-radius: 8px;
+  width: 100%;
+  max-height: 140px;
   object-fit: cover;
+  border-radius: 8px;
   margin-bottom: 0.75rem;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
 }
 
 .popup-card h4 {
-  margin: 0.5rem 0 0.25rem;
   font-size: 1.2rem;
+  margin-bottom: 0.25rem;
   text-align: center;
 }
 
 .popup-card p {
   font-size: 0.9rem;
-  margin: 0.25rem 0;
+  margin: 0.15rem 0;
   text-align: center;
 }
 
@@ -86,13 +87,52 @@
 .event-list {
   margin-top: 1rem;
   padding: 0.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 6px;
-  max-height: 150px;
+  max-height: 180px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.event-item {
-  margin-bottom: 0.5rem;
+.event-item-card {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 255, 120, 0.1);
+}
+
+.event-item-card h5 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.genre {
   font-size: 0.85rem;
+  font-weight: normal;
+  color: #ccc;
+}
+
+.event-date {
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+  font-style: italic;
+}
+
+.more-info-btn {
+  background-color: #747579d5;
+  color: white;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.more-info-btn:hover {
+  background-color: #1e74d7;
 }
