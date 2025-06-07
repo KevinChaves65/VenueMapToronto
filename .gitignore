@@ -1,0 +1,66 @@
+# ==== GENERAL ====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ==== PYTHON BACKEND ====
+# Virtual env
+VenueBackend/venv/
+
+# Python cache
+VenueBackend/**/__pycache__/
+VenueBackend/**/*.pyc
+VenueBackend/**/*.pyo
+VenueBackend/**/*.pyd
+
+# Environment variables
+VenueBackend/.env
+VenueBackend/.env.*
+
+# DB files
+VenueBackend/*.sqlite3
+VenueBackend/*.db
+
+# Logs
+VenueBackend/*.log
+
+# Testing / coverage
+VenueBackend/htmlcov/
+VenueBackend/.coverage
+VenueBackend/.coverage.*
+VenueBackend/.pytest_cache/
+VenueBackend/.mypy_cache/
+
+# ==== ANGULAR FRONTEND ====
+# Node modules
+VenueFrontend/node_modules/
+
+# Angular cache
+VenueFrontend/.angular/cache
+VenueFrontend/dist/
+VenueFrontend/tmp/
+VenueFrontend/out-tsc/
+VenueFrontend/bazel-out/
+
+# Logs
+VenueFrontend/npm-debug.log
+VenueFrontend/yarn-error.log
+
+# Miscellaneous
+VenueFrontend/.sass-cache/
+VenueFrontend/connect.lock
+VenueFrontend/coverage
+VenueFrontend/libpeerconnection.log
+VenueFrontend/testem.log
+VenueFrontend/typings
+VenueFrontend/.history/
+
+# IDE/editor artifacts (if nested accidentally)
+VenueFrontend/.idea/
+VenueFrontend/.vscode/
+VenueFrontend/.DS_Store
+
+# Environment variables (if you use them in frontend)
+VenueFrontend/.env
+VenueFrontend/.env.*
