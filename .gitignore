@@ -21,7 +21,8 @@ VenueBackend/.env.*
 # DB files
 VenueBackend/*.sqlite3
 VenueBackend/*.db
-
+VenueBackend/data/*.json
+VenueBackend/!data/.gitkeep
 # Logs
 VenueBackend/*.log
 
