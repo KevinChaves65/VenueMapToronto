@@ -1,7 +1,7 @@
 import os
 import json
-from app.services.eventbrite_service import get_ticketmaster_events
-from app.models import Events
+from services.ticketmaster_service import get_ticketmaster_events
+from VenueBackend.models import Events
 
 # 1. Call API
 raw_data = get_ticketmaster_events()
