@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.models import Venue
+from VenueBackend.models import Venue
 
 router = APIRouter()
 

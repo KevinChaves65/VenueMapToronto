@@ -1,7 +1,7 @@
 import os
 import json
 from services.ticketmaster_service import get_ticketmaster_events
-from VenueBackend.models import Events
+from models import Event
 
 # 1. Call API
 raw_data = get_ticketmaster_events()
@@ -33,7 +33,7 @@ for event in events:
     venues = event.get("_embedded", {}).get("venues", [])
     VenueId = venues[0].get("id", "") if venues else ""
 
-    event_model = Events(
+    event_model = Event(
         E_id=E_id,
         name=name,
         genre=genre,
@@ -52,10 +52,10 @@ with open("toronto_events.md", "w", encoding="utf-8") as f:
     f.write("# Toronto Events (Ticketmaster API First Page)\n\n")
     for e in parsed_events:
         f.write(f"## {e.name}\n")
-        f.write(f"- **Date:** {e.Date}\n")
-        f.write(f"- **Description:** {e.Description}\n")
-        f.write(f"- **Ticket URL:** [{e.TicketUrl}]({e.TicketUrl})\n")
-        f.write(f"- **Image:** {e.Eimage}\n")
+        f.write(f"- **Date:** {e.date}\n")
+        f.write(f"- **Description:** {e.description}\n")
+        f.write(f"- **Ticket URL:** [{e.ticketUrl}]({e.ticketUrl})\n")
+        f.write(f"- **Image:** {e.eimage}\n")
         f.write("\n---\n\n")
 
 print(f"Done! Wrote toronto_events.md with {len(parsed_events)} events.")

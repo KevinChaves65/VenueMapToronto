@@ -1,6 +1,6 @@
 import json
 import os
-from app.models import Event, Venue, Artist
+from VenueBackend.models import Event, Venue, Artist
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 

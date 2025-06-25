@@ -1,7 +1,7 @@
 import os
 import requests
 import json
-from VenueBackend.models import Events
+from models import Event
 from dotenv import load_dotenv
 load_dotenv()
 
