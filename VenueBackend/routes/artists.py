@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from models import Artist
 router = APIRouter()
 
 # Example route
