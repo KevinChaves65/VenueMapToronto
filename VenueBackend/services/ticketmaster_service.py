@@ -1,7 +1,7 @@
 import os
 import requests
 import json
-from app.models import Events
+from models import Event
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -14,6 +14,7 @@ def get_ticketmaster_events():
         "city": "Toronto",
         "classificationName": "music",
         "countryCode": "CA",
+        "countryCity": "Toronto",
         "size": 50,  # number of results per page
         "page": 0    # page number
     }

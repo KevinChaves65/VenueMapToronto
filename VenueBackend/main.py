@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import venues, events, artists  # import your route modules
+from app.api import venues, events, artists
 
 app = FastAPI(title="Toronto Live Shows API")
 
