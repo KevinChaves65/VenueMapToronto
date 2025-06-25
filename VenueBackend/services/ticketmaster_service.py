@@ -46,15 +46,22 @@ def transform_artist(tm_artist):
 
 def transform_event(tm_event, venue_map, artist_map):
     venue_id = venue_map[tm_event["_embedded"]["venues"][0]["id"]]
-    artist_ids = []
-    for artist in tm_event.get("_embedded", {}).get("attractions", []):
-        artist_ids.append(artist_map[artist["id"]])
-
+    artist_ids = [artist_map[artist["id"]] for artist in tm_event.get("_embedded", {}).get("attractions", [])]
+    
     price = tm_event.get("priceRanges", [{}])[0]
+    classifications = tm_event.get("classifications", [{}])[0]
+    genre = classifications.get("genre", {}).get("name", "Unknown")
+    sub_genre = classifications.get("subGenre", {}).get("name", "")
+    
+    if sub_genre and sub_genre != "Undefined":
+        genre_full = f"{genre} - {sub_genre}"
+    else:
+        genre_full = genre
+
     return {
         "E_id": generate_id(),
         "name": tm_event.get("name", ""),
-        "genre": "Unknown",
+        "genre": genre_full,
         "lineup": artist_ids,
         "date": tm_event.get("dates", {}).get("start", {}).get("dateTime", ""),
         "description": tm_event.get("info", ""),
