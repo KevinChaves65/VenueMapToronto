@@ -42,6 +42,6 @@ class Artist(BaseModel):
     name: str
     genre: str
     description: str
-    events: List[str]  # event IDs
+    events: List[str]
     artistLink: str
     bioPicUrl: str

@@ -34,34 +34,38 @@ def transform_venue(tm_venue):
     }
 
 def transform_artist(tm_artist):
+    classifications = tm_artist.get("classifications", [{}])[0]
+    sub_genre = classifications.get("subGenre", {}).get("name", "Unknown")
+    genre_clean = sub_genre if sub_genre and sub_genre != "Undefined" else "Unknown"
+    
     return {
         "A_id": generate_id(),
         "name": tm_artist.get("name", ""),
-        "genre": "Unknown",
+        "genre": genre_clean,
         "description": "",
-        "events": [],  # To be linked
+        "events": [],
         "artistLink": tm_artist.get("externalLinks", {}).get("instagram", [{}])[0].get("url", ""),
         "bioPicUrl": tm_artist.get("images", [{}])[0].get("url", "")
     }
 
 def transform_event(tm_event, venue_map, artist_map):
     venue_id = venue_map[tm_event["_embedded"]["venues"][0]["id"]]
-    artist_ids = [artist_map[artist["id"]] for artist in tm_event.get("_embedded", {}).get("attractions", [])]
+    artist_ids = []
+    for artist in tm_event.get("_embedded", {}).get("attractions", []):
+        if artist["id"] in artist_map:
+            artist_ids.append(artist_map[artist["id"]])
     
     price = tm_event.get("priceRanges", [{}])[0]
+    # Extract only sub-genre
     classifications = tm_event.get("classifications", [{}])[0]
-    genre = classifications.get("genre", {}).get("name", "Unknown")
-    sub_genre = classifications.get("subGenre", {}).get("name", "")
-    
-    if sub_genre and sub_genre != "Undefined":
-        genre_full = f"{genre} - {sub_genre}"
-    else:
-        genre_full = genre
+    sub_genre = classifications.get("subGenre", {}).get("name", "Unknown")
 
+    # Handle cases where subGenre might be 'Undefined' or empty
+    genre_clean = sub_genre if sub_genre and sub_genre != "Undefined" else "Unknown"
     return {
         "E_id": generate_id(),
         "name": tm_event.get("name", ""),
-        "genre": genre_full,
+        "genre": genre_clean,
         "lineup": artist_ids,
         "date": tm_event.get("dates", {}).get("start", {}).get("dateTime", ""),
         "description": tm_event.get("info", ""),
