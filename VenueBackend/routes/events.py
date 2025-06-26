@@ -1,10 +1,10 @@
 from fastapi import APIRouter
-from VenueBackend.models import Events
+from models import Event
 from services.cache_loader import load_cached_events
 
 router = APIRouter()
 
-@router.get("/", response_model=list[Events])
+@router.get("/", response_model=list[Event])
 def get_events():
     return load_cached_events()
 
