@@ -20,15 +20,15 @@
       (click)="centerMapOnEvent(event)"
       (click)="openEvent(event); $event.stopPropagation()">
       
-      <img [src]="event.Eimage" alt="{{ event.name }}" class="event-thumbnail" />
+      <img [src]="event.eimage" alt="{{ event.name }}" class="event-thumbnail" />
 
       <div class="event-details">
         <h4 class="event-title">{{ event.name }}</h4>
         <p><strong>Genre:</strong> {{ event.genre }}</p>
-        <p><strong>Date:</strong> {{ event.Date }}</p>
+        <p><strong>Date:</strong> {{ event.date }}</p>
 
-        <p *ngIf="event.TicketUrl">
-          <a [href]="event.TicketUrl" target="_blank" class="event-ticket-link">Buy Tickets</a>
+        <p *ngIf="event.ticketUrl">
+          <a [href]="event.ticketUrl" target="_blank" class="event-ticket-link">Buy Tickets</a>
         </p>
       </div>
   </div>

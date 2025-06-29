@@ -5,29 +5,29 @@
     <h3>{{ event.name }}</h3>
 
     <img
-      [src]="event.Eimage || fallbackImageUrl"
+      [src]="event.eimage || fallbackImageUrl"
       alt="{{ event.name }} image"
       class="event-image"
     />
 
     <div class="event-details">
       <p><strong>Genre:</strong> {{ event.genre }}</p>
-      <p><strong>Date:</strong> {{ event.Date }}</p>
-      <p><strong>Description:</strong> {{ event.Description }}</p>
+      <p><strong>Date:</strong> {{ event.date }}</p>
+      <p><strong>Description:</strong> {{ event.description }}</p>
 
-      <div *ngIf="event.TicketUrl" class="ticket-button-container">
-      <a [href]="event.TicketUrl" target="_blank" rel="noopener noreferrer">
+      <div *ngIf="event.ticketUrl" class="ticket-button-container">
+      <a [href]="event.ticketUrl" target="_blank" rel="noopener noreferrer">
       <button mat-raised-button color="primary" class="ticket-button">
       <mat-icon class="ticket-icon">local_activity</mat-icon>
       </button>
       </a>
       </div>
 
-      <div *ngIf="event.lineUp.length > 0" class="lineup-section">
+      <div *ngIf="event.lineup.length > 0" class="lineup-section">
         <p><strong>Line-up:</strong></p>
         <div class="artist-lineup">
           <button 
-            *ngFor="let artist of event.lineUp" 
+            *ngFor="let artist of event.lineup" 
             class="artist-pill" 
             (click)="openArtistModal(artist)">
             {{ artist }}

@@ -8,7 +8,7 @@ from typing import List, Optional
 class Venue(BaseModel):
     V_id: str
     name: str
-    eventIds: List[str]
+    eventIds: List[str] # event IDs
     address: str
     vimage: Optional[str]
     longitude: float
@@ -42,6 +42,6 @@ class Artist(BaseModel):
     name: str
     genre: str
     description: str
-    events: List[str]
+    events: List[str] # event IDs
     artistLink: str
     bioPicUrl: str

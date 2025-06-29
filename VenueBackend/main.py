@@ -1,13 +1,18 @@
 from fastapi import FastAPI
-from app.api import venues, events, artists
+from routes import venues, events, artists 
+from fastapi.middleware.cors import CORSMiddleware
+app = FastAPI()
 
-app = FastAPI(title="Toronto Live Shows API")
-
-# Include routers
 app.include_router(venues.router, prefix="/venues")
 app.include_router(events.router, prefix="/events")
 app.include_router(artists.router, prefix="/artists")
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:4200"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 @app.get("/")
-def read_root():
-    return {"message": "Welcome to Toronto Live Shows API"}
+def root():
+    return {"message": "Toronto Venue API is running"}
