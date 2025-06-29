@@ -20,13 +20,15 @@ export class ArtistCardComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { artist: Artist },
+    private eventService: EventService,
     private artistService: ArtistService
   ) {
     this.artist = data.artist;
   }
+
   ngOnInit(): void {
-    this.artistService.getEventsforArtist(this.artist).subscribe(events => {
-      this.events = events;
+    this.eventService.getEvents().subscribe(allEvents => {
+      this.events = this.artistService.getEventsForArtist(this.artist, allEvents);
     });
   }
 }

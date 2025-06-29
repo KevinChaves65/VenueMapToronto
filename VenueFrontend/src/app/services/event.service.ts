@@ -5,7 +5,7 @@ import { map, Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class EventService {
-  private eventsUrl = 'assets/data/events.json';
+  private eventsUrl = 'http://localhost:8000/events'; // Or use environment.apiUrl
   private cachedEvents: Event[] = [];
 
   constructor(private http: HttpClient) {}
@@ -15,13 +15,14 @@ export class EventService {
       return of(this.cachedEvents);
     }
 
-    return this.http.get<{ events: Event[] }>(this.eventsUrl).pipe(
+    return this.http.get<Event[]>(this.eventsUrl).pipe(
       map(response => {
-        this.cachedEvents = response.events;
+        this.cachedEvents = response;
         return this.cachedEvents;
       })
     );
   }
+
   getEventById(id: string): Observable<Event | null> {
     return this.getEvents().pipe(
       map(events => events.find(event => event.E_id === id) || null)

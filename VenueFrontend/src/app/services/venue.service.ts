@@ -7,7 +7,7 @@ import { Venue } from '../models/venues';
     providedIn: 'root'
   })
   export class VenueService {
-    private venuesUrl = 'assets/data/venues.json';
+    private venuesUrl = 'http://localhost:8000/venues';
     private cachedVenues: Venue[] = [];
     constructor(private http: HttpClient) {}
   
@@ -19,12 +19,12 @@ import { Venue } from '../models/venues';
     });
   }
 
-  return this.http.get<{ venues: Venue[] }>(this.venuesUrl).pipe(
-    map(response => {
-      this.cachedVenues = response.venues;
-      return this.cachedVenues;
-    })
-  );
+    return this.http.get<Venue[]>(this.venuesUrl).pipe(
+      map(response => {
+        this.cachedVenues = response;
+        return this.cachedVenues;
+      })
+    );
 }
     getVenueCoordinatesById(venueId: string): [number, number] | null {
   const venue = this.cachedVenues.find(v => v.V_id === venueId);
@@ -43,14 +43,14 @@ import { Venue } from '../models/venues';
             coordinates: [venue.longitude, venue.latitude]
           },
           properties: {
-          V_id: venue.V_id,
-          venue: venue.venue,
-          imageUrl: venue.imageUrl,
-          address: venue.address,
-          eventIds: venue.eventIds
+            V_id: venue.V_id,
+            name: venue.name,
+            vimage: venue.vimage,
+            address: venue.address,
+            eventIds: venue.eventIds
           }
         }))
       }))
     );
   }
-  }
+}

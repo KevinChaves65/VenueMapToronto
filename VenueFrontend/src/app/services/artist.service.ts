@@ -1,33 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Artist } from '../models/artists';
-import { Observable, map } from 'rxjs';
 import { Event } from '../models/events';
-import { EventService } from './event.service';
+import { map, Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ArtistService {
-  private url = 'assets/data/artist.json';
+  private url = 'http://localhost:8000/artists'; // Or environment.apiUrl
+  private cachedArtists: Artist[] = [];
 
-  constructor(private http: HttpClient, private eventService: EventService) {}
+  constructor(private http: HttpClient) {}
 
   getArtists(): Observable<Artist[]> {
-    return this.http.get<{ artists: Artist[] }>(this.url).pipe(
-      map(res => res.artists)
+    if (this.cachedArtists.length > 0) {
+      return of(this.cachedArtists);
+    }
+
+    return this.http.get<Artist[]>(this.url).pipe(
+      map(response => {
+        this.cachedArtists = response;
+        return this.cachedArtists;
+      })
     );
   }
 
-  getArtistById(A_id: number): Observable<Artist | undefined> {
+  getArtistById(id: string): Observable<Artist | null> {
     return this.getArtists().pipe(
-      map(artists => artists.find(artist => artist.A_id === A_id))
+      map(artists => artists.find(artist => artist.A_id === id) || null)
     );
   }
 
-  getEventsforArtist(artist: Artist): Observable<Event[]>{
-    return this.eventService.getEvents().pipe(
-      map(events =>
-        events.filter(event => event.lineUp.includes(artist.name))
-      )
-    );
+  getEventsForArtist(artist: Artist, allEvents: Event[]): Event[] {
+    return allEvents.filter(event => event.lineup.includes(artist.A_id));
   }
 }

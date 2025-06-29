@@ -1,10 +1,9 @@
-  export interface Venue {
-    V_id: string;
-    venue: string;
-    imageUrl: string;
-    address: string;
-    distance: number;
-    eventIds: string[];
-    latitude: number,
-    longitude: number,
-  }
+export interface Venue {
+  V_id: string;
+  name: string;
+  eventIds: string[];
+  address: string;
+  vimage?: string;
+  longitude: number;
+  latitude: number;
+}

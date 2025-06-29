@@ -1,9 +1,9 @@
 export interface Artist {
-    A_id: number;
-    name: string;
-    genre: string;
-    description: string;
-    events: number[];
-    artistLink: string;
-    bioPicUrl: string;
-  }
+  A_id: string;
+  name: string;
+  genre: string;
+  description: string;
+  events: string[];
+  artistLink: string;
+  bioPicUrl: string;
+}

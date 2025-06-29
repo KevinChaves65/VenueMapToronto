@@ -53,7 +53,7 @@ closeEvent = (): void => {
   document.body.style.overflow = '';
 };
   centerMapOnEvent(event: Event): void {
-  const coords = this.venueService.getVenueCoordinatesById(event.VenueId);
+  const coords = this.venueService.getVenueCoordinatesById(event.V_id);
   if (coords) {
     this.mapService.flyTo(coords[0], coords[1]);
   }
