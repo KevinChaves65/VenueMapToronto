@@ -1,40 +1,23 @@
-import json
-from typing import List, Optional
 from models import Event
+from database import db
 
-DATA_FILE = "data/events.json"
+collection = db.events
 
-def load_events() -> List[Event]:
-    with open(DATA_FILE, "r") as f:
-        data = json.load(f)
-    return [Event(**e) for e in data]
+async def get_all_events():
+    events_cursor = collection.find({})
+    return [Event(**event) async for event in events_cursor]
 
-def get_event_by_id(e_id: str) -> Optional[Event]:
-    events = load_events()
-    return next((e for e in events if e.E_id == e_id), None)
+async def get_event_by_id(e_id: str):
+    event = await collection.find_one({"E_id": e_id})
+    return Event(**event) if event else None
 
-def save_events(events: List[Event]):
-    with open(DATA_FILE, "w") as f:
-        json.dump([e.dict() for e in events], f, indent=2)
+async def add_event(event: Event):
+    await collection.insert_one(event.dict())
 
-def add_event(event: Event):
-    events = load_events()
-    events.append(event)
-    save_events(events)
+async def update_event(e_id: str, updated_event: Event):
+    result = await collection.update_one({"E_id": e_id}, {"$set": updated_event.dict()})
+    return result.modified_count > 0
 
-def delete_event(e_id: str) -> bool:
-    events = load_events()
-    updated = [e for e in events if e.E_id != e_id]
-    if len(updated) != len(events):
-        save_events(updated)
-        return True
-    return False
-
-def update_event(e_id: str, updated_event: Event) -> bool:
-    events = load_events()
-    for i, e in enumerate(events):
-        if e.E_id == e_id:
-            events[i] = updated_event
-            save_events(events)
-            return True
-    return False
+async def delete_event(e_id: str):
+    result = await collection.delete_one({"E_id": e_id})
+    return result.deleted_count > 0
