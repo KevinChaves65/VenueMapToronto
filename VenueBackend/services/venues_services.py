@@ -3,7 +3,7 @@ from typing import List, Optional
 from models import Venue
 from database import db
 
-# Helper to convert MongoDB _id field to string and conform to Pydantic
+# convert MongoDB _id field to string and conform to Pydantic
 def format_venue(venue_doc) -> Venue:
     return Venue(**venue_doc)
 
