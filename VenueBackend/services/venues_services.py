@@ -1,40 +1,35 @@
 import json
 from typing import List, Optional
 from models import Venue
+from database import db
 
-DATA_FILE = "data/venues.json"
+# Helper to convert MongoDB _id field to string and conform to Pydantic
+def format_venue(venue_doc) -> Venue:
+    return Venue(**venue_doc)
 
-def load_venues() -> List[Venue]:
-    with open(DATA_FILE, "r") as f:
-        data = json.load(f)
-    return [Venue(**v) for v in data.get("venues", [])]
+# Load all venues
+async def load_venues() -> List[Venue]:
+    venues_cursor = db.venues.find({})
+    venues = await venues_cursor.to_list(length=1000)
+    return [format_venue(v) for v in venues]
 
-def get_venue_by_id(v_id: str) -> Optional[Venue]:
-    venues = load_venues()
-    return next((v for v in venues if v.V_id == v_id), None)
+# Get venue by ID
+async def get_venue_by_id(v_id: str) -> Optional[Venue]:
+    venue_doc = await db.venues.find_one({"V_id": v_id})
+    if venue_doc:
+        return format_venue(venue_doc)
+    return None
 
-def save_venues(venues: List[Venue]):
-    with open(DATA_FILE, "w") as f:
-        json.dump({"venues": [v.dict() for v in venues]}, f, indent=2)
+# Add a new venue
+async def add_venue(venue: Venue):
+    await db.venues.insert_one(venue.dict())
 
-def add_venue(venue: Venue):
-    venues = load_venues()
-    venues.append(venue)
-    save_venues(venues)
+# Delete venue by ID
+async def delete_venue(v_id: str) -> bool:
+    result = await db.venues.delete_one({"V_id": v_id})
+    return result.deleted_count == 1
 
-def delete_venue(v_id: str) -> bool:
-    venues = load_venues()
-    updated = [v for v in venues if v.V_id != v_id]
-    if len(updated) != len(venues):
-        save_venues(updated)
-        return True
-    return False
-
-def update_venue(v_id: str, updated_venue: Venue) -> bool:
-    venues = load_venues()
-    for i, v in enumerate(venues):
-        if v.V_id == v_id:
-            venues[i] = updated_venue
-            save_venues(venues)
-            return True
-    return False
+# Update venue by ID
+async def update_venue(v_id: str, updated_venue: Venue) -> bool:
+    result = await db.venues.replace_one({"V_id": v_id}, updated_venue.dict())
+    return result.modified_count == 1
