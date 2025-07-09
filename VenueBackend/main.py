@@ -13,6 +13,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-@app.get("/")
-def root():
-    return {"message": "Toronto Venue API is running"}
+@app.get("/test")
+async def test():
+    return {"test": True}

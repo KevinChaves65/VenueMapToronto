@@ -1,40 +1,24 @@
-import json
-from typing import List, Optional
 from models import Artist
+from database import db
+from bson import ObjectId
 
-DATA_FILE = "data/artists.json"
+collection = db.artists
 
-def load_artists() -> List[Artist]:
-    with open(DATA_FILE, "r") as f:
-        data = json.load(f)
-    return [Artist(**a) for a in data.get("artists", [])]
+async def get_all_artists():
+    artists_cursor = collection.find({})
+    return [Artist(**artist) async for artist in artists_cursor]
 
-def get_artist_by_id(a_id: str) -> Optional[Artist]:
-    artists = load_artists()
-    return next((a for a in artists if a.A_id == a_id), None)
+async def get_artist_by_id(a_id: str):
+    artist = await collection.find_one({"A_id": a_id})
+    return Artist(**artist) if artist else None
 
-def save_artists(artists: List[Artist]):
-    with open(DATA_FILE, "w") as f:
-        json.dump({"artists": [a.dict() for a in artists]}, f, indent=2)
+async def add_artist(artist: Artist):
+    await collection.insert_one(artist.dict())
 
-def add_artist(artist: Artist):
-    artists = load_artists()
-    artists.append(artist)
-    save_artists(artists)
+async def update_artist(a_id: str, updated_artist: Artist):
+    result = await collection.update_one({"A_id": a_id}, {"$set": updated_artist.dict()})
+    return result.modified_count > 0
 
-def delete_artist(a_id: str) -> bool:
-    artists = load_artists()
-    updated = [a for a in artists if a.A_id != a_id]
-    if len(updated) != len(artists):
-        save_artists(updated)
-        return True
-    return False
-
-def update_artist(a_id: str, updated_artist: Artist) -> bool:
-    artists = load_artists()
-    for i, a in enumerate(artists):
-        if a.A_id == a_id:
-            artists[i] = updated_artist
-            save_artists(artists)
-            return True
-    return False
+async def delete_artist(a_id: str):
+    result = await collection.delete_one({"A_id": a_id})
+    return result.deleted_count > 0
