@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from routes import venues, events, artists 
 from fastapi.middleware.cors import CORSMiddleware
+from scheduler import start_scheduler
 app = FastAPI()
 
 app.include_router(venues.router, prefix="/venues")
@@ -13,6 +14,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+@app.on_event("startup")
+async def startup_event():
+    start_scheduler()
+
 @app.get("/test")
 async def test():
     return {"test": True}

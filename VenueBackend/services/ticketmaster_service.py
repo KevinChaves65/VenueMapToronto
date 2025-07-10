@@ -9,7 +9,7 @@ load_dotenv()
 
 API_KEY = os.getenv("TICKETMASTER_API_KEY")
 CITY = 'Toronto'
-SIZE = 30
+SIZE = 40
 
 # --- Helper to generate IDs ---
 def generate_id():
