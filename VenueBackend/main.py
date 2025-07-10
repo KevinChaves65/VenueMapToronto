@@ -21,3 +21,7 @@ async def startup_event():
 @app.get("/test")
 async def test():
     return {"test": True}
+
+@app.get("/ping")
+async def ping():
+    return {"status": "OK"}
