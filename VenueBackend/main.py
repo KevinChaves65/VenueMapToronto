@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes import venues, events, artists 
+from routes import venues, events, artists, users
 from fastapi.middleware.cors import CORSMiddleware
 from scheduler import start_scheduler
 app = FastAPI()
@@ -7,6 +7,7 @@ app = FastAPI()
 app.include_router(venues.router, prefix="/venues")
 app.include_router(events.router, prefix="/events")
 app.include_router(artists.router, prefix="/artists")
+app.include_router(users.router, prefix="/api")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:4200"],
