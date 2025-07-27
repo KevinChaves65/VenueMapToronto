@@ -1,10 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
 
-# ----------------------
-# Venue model
-# ----------------------
-
 class Venue(BaseModel):
     V_id: str
     name: str
@@ -13,10 +9,6 @@ class Venue(BaseModel):
     vimage: Optional[str]
     longitude: float
     latitude: float
-
-# ----------------------
-# Event model
-# ----------------------
 
 class Event(BaseModel):
     E_id: str
@@ -33,10 +25,6 @@ class Event(BaseModel):
     max_price: float
     currency: str
 
-# ----------------------
-# Artist model
-# ----------------------
-
 class Artist(BaseModel):
     A_id: str
     name: str
@@ -45,3 +33,12 @@ class Artist(BaseModel):
     events: List[str] # event IDs
     artistLink: str
     bioPicUrl: str
+
+class User(BaseModel):
+    U_id: str
+    username: str
+    email: str
+    password: str
+    liked_events: List[str] = []  # List of Event IDs
+    viewed_events: List[str] = []  # Event IDs the user has interacted with
+    preferences: Optional[List[str]] = [] 
