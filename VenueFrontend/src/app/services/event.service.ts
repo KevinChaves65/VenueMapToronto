@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Event } from '../models/events';
 import { map, Observable, of } from 'rxjs';
+import { environment } from '../../enviroments/environment'; 
 
 @Injectable({ providedIn: 'root' })
 export class EventService {
-  private eventsUrl = 'http://localhost:8000/events'; // Or use environment.apiUrl
+  private eventsUrl = `${environment.apiBaseUrl}/events`;
   private cachedEvents: Event[] = [];
 
   constructor(private http: HttpClient) {}
