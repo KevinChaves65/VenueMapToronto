@@ -1,14 +1,17 @@
-# Step 1: Build the Angular app
-FROM node:18 AS build
+# ---- Build Angular ----
+FROM node:18-alpine AS build
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
-COPY . .
-RUN npm run build --prod
 
-# Step 2: Serve with Nginx
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+# Force output to a fixed folder
+RUN npm run build -- --configuration production --output-path=dist/app
+
+# ---- Serve with Nginx ----
 FROM nginx:alpine
-COPY --from=build /app/dist/venue-frontend /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist/app/ /usr/share/nginx/html/
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
