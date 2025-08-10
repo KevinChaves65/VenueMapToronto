@@ -1,17 +1,18 @@
-# ---- Build Angular ----
 FROM node:18-alpine AS build
 WORKDIR /app
-
 COPY package*.json ./
 RUN npm ci
-
 COPY . .
-# Force output to a fixed folder
 RUN npm run build -- --configuration production --output-path=dist/app
 
-# ---- Serve with Nginx ----
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist/app/ /usr/share/nginx/html/
+COPY --from=build /app/dist/app/browser/ /usr/share/nginx/html/
+
+# If Angular produced index.csr.html, use it as index.html
+RUN if [ -f /usr/share/nginx/html/index.csr.html ]; then \
+      mv /usr/share/nginx/html/index.csr.html /usr/share/nginx/html/index.html; \
+    fi
+
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

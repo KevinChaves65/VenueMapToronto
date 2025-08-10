@@ -10,7 +10,8 @@ services:
 
   frontend:
     build:
-      context: ./VenueFrontend
+      context: ./VenueFrontend       
+      dockerfile: dockerfile 
     ports:
       - "4200:80"
     depends_on:
