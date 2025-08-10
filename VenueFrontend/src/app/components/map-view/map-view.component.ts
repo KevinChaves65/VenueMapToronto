@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../enviroments/enviroments';
+import { environment } from '../../../enviroments/environment';
 import { CommonModule } from '@angular/common';
 import { Venue } from '../../models/venues';
 import { VenueService } from '../../services/venue.service';

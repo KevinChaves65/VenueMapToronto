@@ -16,6 +16,9 @@
             "outputPath": "dist/venue-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "allowedCommonJsDependencies": [
+              "mapbox-gl"
+            ],
             "polyfills": [
               "zone.js"
             ],
@@ -42,13 +45,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "3mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "3mb",
+                  "maximumError": "4mb"
                 }
               ],
               "outputHashing": "all"

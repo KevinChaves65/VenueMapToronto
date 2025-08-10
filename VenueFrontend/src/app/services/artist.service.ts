@@ -3,10 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Artist } from '../models/artists';
 import { Event } from '../models/events';
 import { map, Observable, of } from 'rxjs';
+import { environment } from '../../enviroments/environment'; 
 
 @Injectable({ providedIn: 'root' })
 export class ArtistService {
-  private url = 'http://localhost:8000/artists'; // Or environment.apiUrl
+  private url = `${environment.apiBaseUrl}/artists`;
   private cachedArtists: Artist[] = [];
 
   constructor(private http: HttpClient) {}

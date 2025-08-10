@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Venue } from '../models/venues';
+import { environment } from '../../enviroments/environment'; 
+
 
 @Injectable({
     providedIn: 'root'
   })
   export class VenueService {
-    private venuesUrl = 'http://localhost:8000/venues';
+    private venuesUrl = `${environment.apiBaseUrl}/venues`;
     private cachedVenues: Venue[] = [];
     constructor(private http: HttpClient) {}
   
