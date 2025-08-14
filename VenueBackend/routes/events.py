@@ -5,7 +5,6 @@ from services import events_services
 
 router = APIRouter()
 
-
 @router.get("/search", response_model=PaginatedEvents)
 async def search_events(
     page: int = Query(1, ge=1),
@@ -16,7 +15,7 @@ async def search_events(
     date_to: Optional[str] = None,
     price_min: Optional[float] = None,
     price_max: Optional[float] = None,
-    q: Optional[str] = None,
+    description: Optional[str] = None,
     sort: str = "-date",
 ):
     items, total = await events_services.search_events(
@@ -28,7 +27,7 @@ async def search_events(
         date_to=date_to,
         price_min=price_min,
         price_max=price_max,
-        q=q,
+        description=description,
         sort=sort,
     )
     return {"items": items, "page": page, "page_size": page_size, "total": total}

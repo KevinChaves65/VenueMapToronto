@@ -1,15 +1,12 @@
-from pymongo import ASCENDING, DESCENDING
+from pymongo import ASCENDING, DESCENDING, TEXT
 from models import Event
 from database import db
-from motor.motor_asyncio import AsyncIOMotorCollection
 from datetime import datetime
 from typing import List, Optional, Tuple, Dict, Any
 
 collection = db.events
 
-# ---------- Optional: create indexes for fast queries ----------
 async def ensure_indexes():
-    # text index for name/description searches
     await collection.create_index(
         [("name", TEXT), ("description", TEXT)],
         name="event_text_index",
@@ -21,7 +18,6 @@ async def ensure_indexes():
     await collection.create_index([("min_price", ASCENDING)])
     await collection.create_index([("max_price", ASCENDING)])
 
-# ---------- Existing simple CRUD you already have ----------
 async def get_all_events():
     events_cursor = collection.find({})
     return [Event(**event) async for event in events_cursor]
@@ -41,19 +37,16 @@ async def delete_event(e_id: str):
     result = await collection.delete_one({"E_id": e_id})
     return result.deleted_count > 0
 
-# ---------- New: filtered + paginated search ----------
 def _iso(s: Optional[str]) -> Optional[str]:
     """Normalize ISO string to a form that preserves lexicographic date ordering (e.g., keep 'YYYY-MM-DDTHH:MM:SSZ').
     Your DB stores 'date' as ISO strings, so range matches on strings are OK if format is consistent."""
     if not s:
         return None
-    # Accept 'Z' or offset; ensure 'Z' suffix
     try:
         dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
-        # Return canonical Z format
         return dt.astimezone().isoformat(timespec="seconds").replace("+00:00", "Z")
     except Exception:
-        return s  # fall back to raw if parsing fails
+        return s  
 
 def _parse_sort(sort: str) -> list[tuple[str, int]]:
     # e.g. "-date" -> [("date", DESCENDING)]
@@ -78,7 +71,7 @@ async def search_events(
     date_to: Optional[str] = None,
     price_min: Optional[float] = None,
     price_max: Optional[float] = None,
-    q: Optional[str] = None,
+    description: Optional[str] = None,
     sort: str = "-date",
 ) -> Tuple[List[Event], int]:
     query: Dict[str, Any] = {}
@@ -107,12 +100,10 @@ async def search_events(
     if price_cond:
         query["min_price"] = price_cond  # filter on min_price (common cap/floor)
 
-    # Text search
     projection: Dict[str, Any] = {}
     sort_spec = _parse_sort(sort)
-    if q:
-        # If text search is used and no explicit sort given, prefer textScore
-        query["$text"] = {"$search": q}
+    if description:
+        query["$text"] = {"$search": description}
         projection["score"] = {"$meta": "textScore"}
         if sort in (None, "", "-date"):  # default: use textScore first
             sort_spec = [("score", {"$meta": "textScore"})] + sort_spec
