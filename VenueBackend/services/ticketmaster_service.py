@@ -1,15 +1,10 @@
 import os
 import requests
 from models import Event
-from dotenv import load_dotenv
 import uuid
+from settings import settings
 from database import db 
 import asyncio
-load_dotenv()
-
-API_KEY = os.getenv("TICKETMASTER_API_KEY")
-CITY = 'Toronto'
-SIZE = 40
 
 # --- Helper to generate IDs ---
 def generate_id():
@@ -19,7 +14,7 @@ def generate_id():
 def fetch_events():
     url = (
         f"https://app.ticketmaster.com/discovery/v2/events.json?"
-        f"apikey={API_KEY}&city={CITY}&segmentId=KZFzniwnSyZfZ7v7nJ&size={SIZE}"
+        f"apikey={settings.ticketmaster_api_key}&city={settings.ticketmaster_city}&segmentId={settings.ticketmaster_segment_id}&size={settings.ticketmaster_size}"
     )
     response = requests.get(url)
     data = response.json()

@@ -1,12 +1,13 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 import os
+from settings import settings
 
 load_dotenv()
 
 MONGO_URI = os.getenv("MONGO_URI")
-client = AsyncIOMotorClient(MONGO_URI)
-db = client["VenueProject"]
+client = AsyncIOMotorClient(str(settings.mongo_uri))
+db = client[settings.mongo_db]
 
 async def ensure_indexes():
     # Events: genre/date/venue/price + basic text search on name/description
