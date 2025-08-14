@@ -64,8 +64,8 @@ def _parse_sort(sort: str) -> list[tuple[str, int]]:
     return [(field, direction)]
 
 async def search_events(
-    page: int = 1,
-    page_size: int = 20,
+    page: int = settings.default_page,
+    page_size: int = settings.default_page_sizeS,
     genre: Optional[str] = None,
     venue_id: Optional[str] = None,
     date_from: Optional[str] = None,
