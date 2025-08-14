@@ -42,3 +42,9 @@ class User(BaseModel):
     liked_events: List[str] = []  # List of Event IDs
     viewed_events: List[str] = []  # Event IDs the user has interacted with
     preferences: Optional[List[str]] = [] 
+
+class PaginatedEvents(BaseModel):
+    items: List[Event]
+    page: int
+    page_size: int
+    total: int
