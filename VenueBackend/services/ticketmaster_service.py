@@ -119,8 +119,6 @@ async def transform_all():
     await db.events.delete_many({})
     await db.events.insert_many(events)
 
-    print("✅ MongoDB updated with new Ticketmaster data.")
-
 # --- Run the script ---
 if __name__ == "__main__":
     asyncio.run(transform_all())
