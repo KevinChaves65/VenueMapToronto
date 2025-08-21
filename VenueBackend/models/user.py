@@ -1,36 +1,53 @@
-from pydantic import BaseModel, Field, EmailStr
-from typing import List, Optional
-from datetime import datetime
+from pydantic import BaseModel, EmailStr, Field
+from typing import Literal, Union, Optional
 
-class User(BaseModel):
-    U_id: str
-    name: str
+
+class UserBase(BaseModel):
+    username: str
     email: EmailStr
-    liked_event_ids: List[str] = []
-    preferences: Optional[dict] = None
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    password: str
+    user_type: str
 
-    class Config:
-        from_attributes = True
 
+# ---------- FAN ----------
+
+class FanUser(UserBase):
+    user_type: Literal["fan"]
+
+
+# ---------- ARTIST ----------
+
+class ArtistUser(UserBase):
+    user_type: Literal["artist"]
+    artist_bio: Optional[str] = None
+    genres: Optional[list[str]] = None
+    website: Optional[str] = None
+
+
+# ---------- PROMOTER ----------
+
+class PromoterUser(UserBase):
+    user_type: Literal["promoter"]
+    promoter_org: Optional[str] = None
+    promo_code: Optional[str] = None
+
+
+# ---------- VENUE OWNER ----------
+
+class VenueOwnerUser(UserBase):
+    user_type: Literal["venue_owner"]
+    venue_id: str  # required for venue owners
+
+
+# ---------- UNION TYPE ----------
 
 class UserCreate(BaseModel):
-    U_id: str
-    name: str
+    username: str
     email: EmailStr
-    preferences: Optional[dict] = None
-
-    class Config:
-        from_attributes = True
+    password: str
+    type: Literal["fan", "artist", "promoter", "venue_owner"]
 
 
-class UserUpdate(BaseModel):
-    name: Optional[str] = None
-    email: Optional[EmailStr] = None
-    liked_event_ids: Optional[List[str]] = None
-    preferences: Optional[dict] = None
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
-
-    class Config:
-        from_attributes = True
+class UserInDB(UserBase):
+    id: str
+    type: Literal["fan", "artist", "promoter", "venue_owner"]
