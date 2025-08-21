@@ -17,7 +17,6 @@ VenueBackend/**/*.pyd
 # Environment variables
 VenueBackend/.env
 VenueBackend/.env.*
-
 # DB files
 VenueBackend/*.sqlite3
 VenueBackend/*.db
