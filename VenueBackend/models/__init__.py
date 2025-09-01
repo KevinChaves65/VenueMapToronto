@@ -3,13 +3,14 @@ from .venue import Venue, VenueCreate, VenueUpdate
 from .artist import Artist, ArtistCreate, ArtistUpdate
 from .event import Event, EventCreate, EventUpdate, PaginatedEvents
 from .user import (
-    UserBase,
+    BaseUser,
     FanUser,
     ArtistUser,
     PromoterUser,
-    VenueOwnerUser,
+    VenueUser,
+    User,
     UserCreate,
-    UserInDB,
+    UserInDB
 )
 from .pagination import Paginated
 
@@ -21,6 +22,6 @@ __all__ = [
     "Artist","ArtistCreate","ArtistUpdate",
     "Event","EventCreate","EventUpdate","PaginatedEvents"
     "UserBase"," FanUser","ArtistUser","PromoterUser",
-    "VenueOwnerUser","UserCreate","UserInDB",
+    "VenueUser","UserCreate","UserInDB",
     "Paginated",
 ]

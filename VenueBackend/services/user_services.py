@@ -1,7 +1,8 @@
 from typing import Union
 from bson import ObjectId
 from fastapi import HTTPException
-from models.user import UserCreate, UserInDB
+from models.user.user_create import UserCreate 
+from models.user.user_in_db import UserInDB
 from database import db
 
 
