@@ -2,7 +2,16 @@ from .common import EventStatus, GeoPoint, Price, SourceRefs, TimeStamped, Title
 from .venue import Venue, VenueCreate, VenueUpdate
 from .artist import Artist, ArtistCreate, ArtistUpdate
 from .event import Event, EventCreate, EventUpdate, PaginatedEvents
-from .user import User, UserCreate, UserUpdate
+from .user import (
+    BaseUser,
+    FanUser,
+    ArtistUser,
+    PromoterUser,
+    VenueUser,
+    User,
+    UserCreate,
+    UserInDB
+)
 from .pagination import Paginated
 
 __all__ = [
@@ -12,6 +21,7 @@ __all__ = [
     "Venue","VenueCreate","VenueUpdate",
     "Artist","ArtistCreate","ArtistUpdate",
     "Event","EventCreate","EventUpdate","PaginatedEvents"
-    "User","UserCreate","UserUpdate",
+    "UserBase"," FanUser","ArtistUser","PromoterUser",
+    "VenueUser","UserCreate","UserInDB",
     "Paginated",
 ]

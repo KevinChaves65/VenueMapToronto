@@ -1,44 +1,48 @@
-from fastapi import HTTPException
-from models import User
-from database import db
+from typing import Union
 from bson import ObjectId
+from fastapi import HTTPException
+from models.user.user_create import UserCreate 
+from models.user.user_in_db import UserInDB
+from database import db
+
 
 users_collection = db["users"]
 
-def serialize_user(user_doc):
-    user_doc["U_id"] = str(user_doc["_id"])
-    user_doc.pop("_id", None)
-    return user_doc
+def cast_user(data: dict) -> UserInDB:
+    return UserInDB(**data)
 
-# Create a new user
-def create_user(user: User):
+
+async def create_user(user: UserCreate) -> UserInDB:
     user_dict = user.dict()
-    user_dict.pop("U_id", None)
-    result = users_collection.insert_one(user_dict)
-    new_user = users_collection.find_one({"_id": result.inserted_id})
-    return serialize_user(new_user)
+    result = await collection.insert_one(user_dict)
+    return UserInDB(**user_dict, _id=str(result.inserted_id))
 
-# Get user by ID
-def get_user(user_id: str):
-    user = users_collection.find_one({"_id": ObjectId(user_id)})
+
+async def get_user_by_id(user_id: str) -> UserInDB:
+    user = await collection.find_one({"_id": ObjectId(user_id)})
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
-    return serialize_user(user)
+    return cast_user(user)
 
-# Like an event
-def like_event(user_id: str, event_id: str):
-    result = users_collection.update_one(
-        {"_id": ObjectId(user_id)},
-        {"$addToSet": {"liked_events": event_id}}
-    )
-    if result.modified_count == 0:
-        raise HTTPException(status_code=404, detail="User not updated or not found")
-    return {"message": "Event liked."}
 
-# View event (for tracking interactions)
-def view_event(user_id: str, event_id: str):
-    users_collection.update_one(
+async def get_user_by_email(email: str) -> UserInDB:
+    user = await collection.find_one({"email": email})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return cast_user(user)
+
+
+async def update_user(user_id: str, update_data: dict) -> UserInDB:
+    result = await collection.find_one_and_update(
         {"_id": ObjectId(user_id)},
-        {"$addToSet": {"viewed_events": event_id}}
+        {"$set": update_data},
+        return_document=True
     )
-    return {"message": "Event view recorded."}
+    if not result:
+        raise HTTPException(status_code=404, detail="User not found")
+    return cast_user(result)
+
+
+async def delete_user(user_id: str) -> bool:
+    result = await collection.delete_one({"_id": ObjectId(user_id)})
+    return result.deleted_count == 1
