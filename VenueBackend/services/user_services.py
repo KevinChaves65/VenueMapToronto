@@ -46,3 +46,25 @@ async def update_user(user_id: str, update_data: dict) -> UserInDB:
 async def delete_user(user_id: str) -> bool:
     result = await collection.delete_one({"_id": ObjectId(user_id)})
     return result.deleted_count == 1
+
+
+async def like_event(user_id: str, event_id: str) -> bool:
+    result = await collection.update_one(
+        {"_id": ObjectId(user_id)},
+        {"$addToSet": {"liked_events": event_id}}
+    )
+    return result.modified_count == 1
+
+async def track_event(user_id: str, event_id: str) -> bool:
+    result = await collection.update_one(
+        {"_id": ObjectId(user_id)},
+        {"$addToSet": {"tracked_events": event_id}}
+    )
+    return result.modified_count == 1
+
+async def like_artist(user_id: str, artist_id: str) -> bool:
+    result = await collection.update_one(
+        {"_id": ObjectId(user_id)},
+        {"$addToSet": {"liked_artists": artist_id}}
+    )
+    return result.modified_count == 1

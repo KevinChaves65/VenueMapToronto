@@ -33,3 +33,10 @@ async def track_event(user_id: str, event_id: str):
     if not success:
         raise HTTPException(status_code=404, detail="User or event not found")
     return {"message": "Event tracked"}
+
+@router.post("/{user_id}/like/{artist_id}")
+async def like_artist(user_id: str, artist_id: str):
+    success = await user_services.like_artist(user_id, artist_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="User or artist not found")
+    return {"message": "Artist liked"}
