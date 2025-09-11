@@ -22,6 +22,9 @@ class Settings(BaseSettings):
     ticketmaster_size: int = 100
     ticketmaster_segment_id: str = "KZFzniwnSyZfZ7v7nJ"  # Music segment
 
+    # --- EventBrite ---
+    evenbrite_api_key: Optional[str] = os.getenv("EVENTBRITE_API_KEY")
+
     # --- CORS ---
     cors_origins: List[str] = ["http://localhost:4200"]
 
