@@ -1,3 +1,69 @@
 @import "tailwindcss";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Color Palette - Using Tailwind v4 @theme syntax */
+@theme {
+  /* Neutral Colors */
+  --color-white: #FFFFFF;
+  --color-lightest: #F2F2F2;
+  --color-lighter: #D8D9D9;
+  --color-light: #B2B3B3;
+  --color-neutral: #808080;
+  --color-dark: #4D4D4D;
+  --color-darker: #1A1B1B;
+  --color-black: #010202;
+
+  /* Primary Colors (Curious Blue) */
+  --color-primary-lightest: #E9F3F9;
+  --color-primary-lighter: #D4E8F4;
+  --color-primary-light: #68AFDB;
+  --color-primary: #288ECC;
+  --color-primary-dark: #2071A3;
+  --color-primary-darker: #103851;
+  --color-primary-darkest: #0C2A3D;
+
+  /* Secondary Colors (Merino) */
+  --color-secondary-lightest: #FEFEFD;
+  --color-secondary-lighter: #FDFDFB;
+  --color-secondary-light: #FAF8F2;
+  --color-secondary: #F9F5ED;
+  --color-secondary-dark: #C7C4BD;
+  --color-secondary-darker: #63625E;
+  --color-secondary-darkest: #4A4947;
+
+  /* Tertiary Colors (Mirage) */
+  --color-tertiary-lightest: #E8E8E9;
+  --color-tertiary-lighter: #D1D2D4;
+  --color-tertiary-light: #5E6269;
+  --color-tertiary: #191F29;
+  --color-tertiary-dark: #141820;
+  --color-tertiary-darker: #0A0C10;
+  --color-tertiary-darkest: #07090C;
+}
+
+/* Background Colors */
+.bg {
+  background-color: var(--color-tertiary-dark);
+}
+
+.fg {
+  background-color: var(--color-tertiary);
+}
+
+/* Text Colors */
+.text {
+  color: var(--color-secondary);
+}
+
+/* fonts */
+@font-face {
+  font-family: "Manrope";
+  src: url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap") format("truetype");
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap") format("truetype");
+}
