@@ -1,32 +1,50 @@
-<!-- showfari-landing.component.html -->
-<div class="min-h-screen flex flex-col bg-secondary font-manrope text-tertiary-darkest">
-  <!-- Header Section -->
-  <header class="p-6 flex items-center justify-between shadow-md bg-primary text-white">
-    <h1 class="text-4xl font-bold tracking-wide">Showfari</h1>
-    <nav class="space-x-4">
-      <button class="bg-white text-primary px-4 py-2 rounded-md hover:bg-primary-light transition">Sign In</button>
-      <button class="bg-primary-dark text-white px-4 py-2 rounded-md hover:bg-primary-lighter transition">Sign Up</button>
+<div class="relative w-full h-full font-[Manrope] overflow-hidden bg-tertiary-dark">
+  <!-- Background Image -->
+  <img
+    *ngFor="let image of images; let i = index"
+    [src]="'assets/images/landingPics/' + image"
+    [class.hidden]="i !== currentIndex()"
+    class="absolute right-20 bottom-1/8 w-250 h-150 outline-white outline-2 outline-offset-2 object-cover transition-opacity duration-1000"
+    alt="Slideshow image"
+  />
+
+  <!-- Navbar -->
+  <div class="relative z-20 flex justify-between items-center px-10 py-6">
+    <h1 class="text-3xl font-extrabold text-white">Showfari</h1>
+    <nav class="space-x-6 text-white font-semibold">
+      <a href="#">Sign up</a>
+      <a href="#">Log in</a>
     </nav>
-  </header>
+  </div>
 
-  <!-- Image Carousel Placeholder -->
-  <section class="flex-1 bg-tertiary-darkest text-white flex flex-col justify-center items-center p-10">
-    <div class="w-full max-w-6xl aspect-[16/9] bg-lightest rounded-lg flex items-center justify-center shadow-inner">
-      <p class="text-2xl">[Image Carousel Placeholder]</p>
-    </div>
-  </section>
+  <!-- Overlay Card -->
+  <div class="absolute top-1/2 left-16 -translate-y-1/2 bg-white shadow-2xl p-8 rounded-2xl w-[26rem] z-20">
+    <h2 class="text-3xl font-extrabold text-gray-800 leading-snug">
+      Discover live music events in Toronto
+    </h2>
+    <p class="text-sm text-gray-500 mt-1 mb-6">
+      Find and book concerts, shows, and more.
+    </p>
 
-  <!-- Filter Section -->
-  <section class="bg-secondary-dark p-6 mt-auto shadow-inner">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
-      <input type="text" placeholder="Search GTA" class="p-3 rounded-md bg-white text-black border border-light" />
-      <select class="p-3 rounded-md bg-white text-black border border-light">
-        <option disabled selected>Genre</option>
-        <option>Rock</option>
-        <option>Jazz</option>
-        <option>Hip Hop</option>
-      </select>
-      <input type="date" class="p-3 rounded-md bg-white text-black border border-light" />
+    <!-- Location -->
+    <label class="block text-xs font-medium mb-1">Price</label>
+    <input type="text" value="$15.00" class="w-full border rounded-md p-2 mb-4" />
+
+    <!-- Dates -->
+    <div class="flex gap-2">
+      <div class="flex-1">
+        <label class="block text-xs font-medium mb-1">FROM</label>
+        <input type="date" class="w-full border rounded-md p-2" />
+      </div>
+      <div class="flex-1">
+        <label class="block text-xs font-medium mb-1">TO</label>
+        <input type="date" class="w-full border rounded-md p-2" />
+      </div>
     </div>
-  </section>
+
+    <!-- Search Button -->
+    <button class="w-full mt-6 bg-[color:var(--color-primary)] hover:bg-[color:var(--color-primary-dark)] text-white font-semibold py-2 px-4 rounded-md">
+      Explore
+    </button>
+  </div>
 </div>

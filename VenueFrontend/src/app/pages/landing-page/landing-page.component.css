@@ -1,9 +1,7 @@
-input, select {
-  font-size: 14px;
-  outline: none;
+img {
+  transition: opacity 1s ease-in-out;
 }
-
-button {
-  transition: all 0.2s ease-in-out;
-  font-size: 14px;
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
