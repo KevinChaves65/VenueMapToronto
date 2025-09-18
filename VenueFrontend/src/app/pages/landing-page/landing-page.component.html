@@ -1,0 +1,32 @@
+<!-- showfari-landing.component.html -->
+<div class="min-h-screen flex flex-col bg-secondary font-manrope text-tertiary-darkest">
+  <!-- Header Section -->
+  <header class="p-6 flex items-center justify-between shadow-md bg-primary text-white">
+    <h1 class="text-4xl font-bold tracking-wide">Showfari</h1>
+    <nav class="space-x-4">
+      <button class="bg-white text-primary px-4 py-2 rounded-md hover:bg-primary-light transition">Sign In</button>
+      <button class="bg-primary-dark text-white px-4 py-2 rounded-md hover:bg-primary-lighter transition">Sign Up</button>
+    </nav>
+  </header>
+
+  <!-- Image Carousel Placeholder -->
+  <section class="flex-1 bg-tertiary-darkest text-white flex flex-col justify-center items-center p-10">
+    <div class="w-full max-w-6xl aspect-[16/9] bg-lightest rounded-lg flex items-center justify-center shadow-inner">
+      <p class="text-2xl">[Image Carousel Placeholder]</p>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="bg-secondary-dark p-6 mt-auto shadow-inner">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+      <input type="text" placeholder="Search GTA" class="p-3 rounded-md bg-white text-black border border-light" />
+      <select class="p-3 rounded-md bg-white text-black border border-light">
+        <option disabled selected>Genre</option>
+        <option>Rock</option>
+        <option>Jazz</option>
+        <option>Hip Hop</option>
+      </select>
+      <input type="date" class="p-3 rounded-md bg-white text-black border border-light" />
+    </div>
+  </section>
+</div>
