@@ -14,7 +14,7 @@ export class SignInPageComponent {
 email = '';
   password = '';
   error = '';
-
+/// Still need to connect to backend properly
   constructor(private auth: AuthService, private router: Router) {}
 
   login() {
@@ -27,9 +27,6 @@ email = '';
         this.error = 'Invalid email or password';
       }
     });
-  }
-  goToLanding(){
-    this.router.navigate([''])
   }
 }
 

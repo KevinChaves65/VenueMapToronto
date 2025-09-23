@@ -11,11 +11,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './sign-up-page.component.css'
 })
 export class SignUpPageComponent {
-name = '';
+  name = '';
   email = '';
   password = '';
   error = '';
-
+/// Still need to connect to backend properly
   constructor(private auth: AuthService, private router: Router) {}
 
   register() {
@@ -23,8 +23,5 @@ name = '';
       next: () => this.router.navigate(['/signin']),
       error: () => this.error = 'Registration failed. Try again.'
     });
-  }
-  goToLanding(){
-    this.router.navigate([''])
   }
 }

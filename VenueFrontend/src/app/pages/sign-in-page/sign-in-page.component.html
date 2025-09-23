@@ -1,41 +1,36 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-    <h2 class="text-2xl font-bold mb-6 text-center">Sign In</h2>
+<div class="w-full h-screen font-[Manrope] bg-tertiary-dark flex items-center justify-center relative">
+  <div class="bg-white rounded-2xl shadow-2xl outline-2 outline-primary p-8 w-[28rem]">
+    <h2 class="text-3xl font-extrabold text-gray-800 mb-2">Welcome back!</h2>
+    <p class="text-sm text-gray-500 mb-6">Sign in to continue your journey.</p>
 
-    <form (submit)="login()" class="space-y-4">
-      <input
-        type="email"
-        [(ngModel)]="email"
-        name="email"
-        required
-        placeholder="Email"
-        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          class="w-full border border-gray-300 rounded-md p-2"
+          placeholder="you@example.com"
+        />
+      </div>
 
-      <input
-        type="password"
-        [(ngModel)]="password"
-        name="password"
-        required
-        placeholder="Password"
-        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+        <input
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          class="w-full border border-gray-300 rounded-md p-2"
+          placeholder="••••••••"
+        />
+      </div>
 
       <button
-        type="submit"
-        class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-        (click)="goToLanding()"
-      >
+        class="w-full bg-[color:var(--color-primary)] hover:bg-[color:var(--color-primary-dark)] text-white font-semibold py-2 px-4 rounded-md"
+        type="submit">
         Sign In
       </button>
-
-      <p *ngIf="error" class="text-red-500 text-sm text-center mt-2">{{ error }}</p>
     </form>
-
-    <div class="text-center mt-4">
-      <a routerLink="/signup" class="text-blue-600 hover:underline text-sm">
-        Don’t have an account? Sign up
-      </a>
-    </div>
   </div>
 </div>
