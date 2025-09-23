@@ -14,8 +14,8 @@
     <!-- Put logo here when have-->
     <h1 class="text-3xl font-extrabold text-white">Showfari</h1>
     <nav class="space-x-6 text-white font-semibold">
-      <a href="#">Sign up</a>
-      <a href="#">Log in</a>
+      <button (click)="goToSignUp()">Sign up</button>
+      <button (click)="goToSignIn()">Sign in</button>
     </nav>
   </div>
 
@@ -54,7 +54,7 @@ p-4 rounded-2xl w-[28rem] z-20 outline-primary outline-2 outline-offset-2">
   </div>
 
   <!-- Price Filter  kinda ugly ask rani for advice later-->
-<label class="block text-xs font-medium mb-1">Max Price ($)</label>
+<label class="block text-xs font-medium mb-1">Price</label>
 <div class="flex items-center gap-3 mb-4">
   <input
     type="range"
@@ -64,7 +64,7 @@ p-4 rounded-2xl w-[28rem] z-20 outline-primary outline-2 outline-offset-2">
     [(ngModel)]="maxPrice"
     class="flex-1"
   />
-  <span class="w-12 text-right text-sm text-gray-600">\${{ maxPrice }}</span>
+  <span class="w-12 text-right text-sm text-gray-600">${{ maxPrice }}</span>
 </div>
 
   <!-- Search Button -->

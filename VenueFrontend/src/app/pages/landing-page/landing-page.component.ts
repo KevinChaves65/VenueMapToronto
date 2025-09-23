@@ -33,4 +33,10 @@ export class LandingPageComponent {
   goToMap() {
     this.router.navigate(['/map']);
   }
+  goToSignUp(){
+    this.router.navigate(['/signup'])
+  }
+  goToSignIn(){
+    this.router.navigate(['/signin'])
+  }
 }

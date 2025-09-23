@@ -1,0 +1,50 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Create Account</h2>
+
+    <form (submit)="register()" class="space-y-4">
+      <input
+        type="text"
+        [(ngModel)]="name"
+        name="name"
+        required
+        placeholder="Name"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        required
+        placeholder="Email"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+        placeholder="Password"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+      >
+        Sign Up
+      </button>
+
+      <p *ngIf="error" class="text-red-500 text-sm text-center mt-2">{{ error }}</p>
+    </form>
+
+    <div class="text-center mt-4">
+      <a routerLink="/signin" class="text-blue-600 hover:underline text-sm">
+        Already have an account? Sign in
+      </a>
+    </div>
+  </div>
+</div>
+
