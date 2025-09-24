@@ -1,4 +1,4 @@
-<div class="w-full h-full  font-[Manrope] bg-tertiary-dark text-white flex flex-col items-center px-8 py-16">
+<div class="min-h-screen w-full font-[Manrope] bg-tertiary-dark text-white flex flex-col items-center px-8 py-16">
   <!-- Header -->
   <div class="max-w-4xl text-center mb-12">
     <h1 class="text-4xl font-extrabold mb-4">Showfari</h1>
@@ -38,6 +38,7 @@
         <img [src]="member.img" alt="{{ member.name }}" class="w-24 h-24 object-cover rounded-full mb-4 border-4 border-primary">
         <h3 class="text-lg font-semibold">{{ member.name }}</h3>
         <p class="text-sm text-gray-600">{{ member.role }}</p>
+        <a class="size-25" href={{member.LinkedinUrl}} target="_blank"><img src="assets/icons/linkedin.svg" /></a>
       </div>
     </div>
   </div>
