@@ -1,28 +1,32 @@
-<div class="top-bar">
-    <div class="icon-row">
-  <button mat-icon-button (click)="togglePanel('social')" aria-label="Social">
-    <mat-icon>contact_page</mat-icon>
+<!-- Top Bar: Fixed Position + Icons Only -->
+<div class="fixed top-4 right-4 z-50 flex items-center space-x-3 bg-zinc-800/80 p-2 rounded-xl shadow-lg">
+  <button mat-icon-button (click)="togglePanel('about')" aria-label="About">
+    <mat-icon class="text-white">contact_page</mat-icon>
   </button>
-
   <button mat-icon-button (click)="togglePanel('settings')" aria-label="Settings">
-    <mat-icon>settings</mat-icon>
+    <mat-icon class="text-white">settings</mat-icon>
   </button>
-
   <button mat-icon-button (click)="togglePanel('account')" aria-label="Account">
-    <mat-icon>person</mat-icon>
+    <mat-icon class="text-white">person</mat-icon>
   </button>
 </div>
 
-<!-- Toggle panels -->
-<div class="panel" *ngIf="activePanel === 'social'">
-    <app-about></app-about>
-</div>
+<!-- Panel: Overlay Centered Modal -->
+<div *ngIf="activePanel" class="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+  <div
+    class="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-tertiary-dark rounded-xl p-6 shadow-2xl text-white"
+    (click)="$event.stopPropagation()">
+    <!-- Close Button -->
+    <button
+      (click)="closePanel()"
+      class="absolute top-4 right-4 text-white text-2xl"
+    >&times;</button>
 
-<div class="panel" *ngIf="activePanel === 'settings'">
-  <app-settings></app-settings>
-</div>
-
-<div class="panel" *ngIf="activePanel === 'account'">
-  <app-profile></app-profile>
-</div>
+    <!-- Panel Content -->
+    <ng-container [ngSwitch]="activePanel">
+      <app-about-page *ngSwitchCase="'about'"></app-about-page>
+      <app-settings *ngSwitchCase="'settings'"></app-settings>
+      <app-profile *ngSwitchCase="'account'"></app-profile>
+    </ng-container>
+  </div>
 </div>
