@@ -4,6 +4,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { MapPageComponent } from './pages/map-page/map-page.component';
 import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 export const routes: Routes = [
     { path: 'events/:title', component: EventCardComponent},
@@ -11,4 +12,5 @@ export const routes: Routes = [
     { path: 'map', component: MapPageComponent },
     { path: 'signin', component: SignInPageComponent },
     { path: 'signup', component: SignUpPageComponent },
+    { path: 'about', component: AboutPageComponent }
 ];

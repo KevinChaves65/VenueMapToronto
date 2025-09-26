@@ -1,0 +1,52 @@
+<div class="min-h-screen w-full font-[Manrope] bg-tertiary-dark text-white flex flex-col items-center px-8 py-16">
+  <!-- Header -->
+  <div class="max-w-4xl text-center mb-12">
+    <h1 class="text-4xl font-extrabold mb-4">Showfari</h1>
+    <p class="text-lg text-gray-300" [innerHTML]="aboutHtml">
+    </p>
+  </div>
+
+  <!-- Feature Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mb-16">
+    <div class="bg-white text-tertiary-dark p-6 rounded-xl shadow-md">
+      <h2 class="text-xl font-bold mb-2"> Curated Genres</h2>
+      <p class="text-sm text-gray-600">Explore live events from Rock to Classical — we’ve got something for everyone.</p>
+    </div>
+    <div class="bg-white text-tertiary-dark p-6 rounded-xl shadow-md">
+      <h2 class="text-xl font-bold mb-2"> Smart Filtering</h2>
+      <p class="text-sm text-gray-600">Set your price range, pick your dates, and let us handle the rest.</p>
+    </div>
+    <div class="bg-white text-tertiary-dark p-6 rounded-xl shadow-md">
+      <h2 class="text-xl font-bold mb-2"> Interactive Map</h2>
+      <p class="text-sm text-gray-600">Visualize concerts on our beautiful, interactive venue map.</p>
+    </div>
+  </div>
+
+  <!-- Mission or Image Section -->
+  <div class="max-w-4xl text-center">
+    <h2 class="text-2xl font-bold mb-4">Our Mission</h2>
+    <p class="text-lg text-gray-300" [innerHTML]="missionHtml">
+    <blockquote class="italic text-primary border-primary-dark pl-4 text-lg">
+      “Shake ass?” — Dan
+    </blockquote>
+  </div>
+
+   <div class="text-center max-w-5xl mx-auto">
+    <h2 class="text-2xl font-bold mb-8">Meet the Team</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div *ngFor="let member of team" class="bg-white text-tertiary-dark p-6 rounded-xl shadow-md flex flex-col items-center">
+        <img [src]="member.img" alt="{{ member.name }}" class="w-24 h-24 object-cover rounded-full mb-4 border-4 border-primary">
+        <h3 class="text-lg font-semibold">{{ member.name }}</h3>
+        <p class="text-sm text-gray-600">{{ member.role }}</p>
+        <a class="size-25" href={{member.LinkedinUrl}} target="_blank"><img src="assets/icons/linkedin.svg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <h2 class="text-2xl font-bold text-primary-lightest">Support us: Link to Kofi</h2>
+  </div>
+  <br>
+  <div class="text-center">
+    <h2 class="text-2xl to-primary-light">Contact us at : Showfari email</h2>
+  </div>
+</div>
