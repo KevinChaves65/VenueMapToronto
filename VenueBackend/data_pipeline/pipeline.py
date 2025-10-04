@@ -13,6 +13,7 @@ async def run_pipeline():
     venue_map, artist_map = {}, {}
 
    # --- First pass: Extract venues and artists from events ---
+   # --- This is where when multiple sources are add we compare and make sure duplicates are deleted ---
     for ev in raw_events:
         # Handle venues
         for v_raw in ev.get("_embedded", {}).get("venues", []):
