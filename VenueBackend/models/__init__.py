@@ -1,7 +1,7 @@
 from .common import EventStatus, GeoPoint, Price, SourceRefs, TimeStamped, TitleStr, ShortStr
-from .venue import Venue, VenueCreate, VenueUpdate
-from .artist import Artist, ArtistCreate, ArtistUpdate
-from .event import Event, EventCreate, EventUpdate, PaginatedEvents
+from .venue import Venue
+from .artist import Artist
+from .event import Event, PaginatedEvents
 from .user import (
     BaseUser,
     FanUser,
@@ -18,9 +18,9 @@ __all__ = [
     # common
     "EventStatus","GeoPoint","Price","SourceRefs","TimeStamped","TitleStr","ShortStr",
     # domain
-    "Venue","VenueCreate","VenueUpdate",
-    "Artist","ArtistCreate","ArtistUpdate",
-    "Event","EventCreate","EventUpdate","PaginatedEvents"
+    "Venue",
+    "Artist",
+    "Event","PaginatedEvents"
     "UserBase"," FanUser","ArtistUser","PromoterUser",
     "VenueUser","UserCreate","UserInDB",
     "Paginated",
