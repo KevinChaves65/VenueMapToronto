@@ -6,7 +6,7 @@ from models.user.user_in_db import UserInDB
 from database import db
 
 
-users_collection = db["users"]
+collection = db["users"]
 
 def cast_user(data: dict) -> UserInDB:
     return UserInDB(**data)

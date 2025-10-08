@@ -16,6 +16,7 @@ export class SignUpPageComponent {
   password = '';
   error = '';
 /// Still need to connect to backend properly
+
   constructor(private auth: AuthService, private router: Router) {}
 
   register() {
