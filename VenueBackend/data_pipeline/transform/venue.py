@@ -1,15 +1,29 @@
-from datetime import datetime
 from models.venue import Venue
-from .utils import generate_id
+from data_pipeline.transform.utils import generate_id
+from datetime import datetime
 
-def transform(tm_venue: dict) -> Venue:
+
+def transform(data: dict) -> Venue:
+    address_parts = []
+    if "address" in data:
+        if "line1" in data["address"]:
+            address_parts.append(data["address"]["line1"])
+    if "city" in data:
+        address_parts.append(data["city"].get("name"))
+    if "state" in data:
+        address_parts.append(data["state"].get("name"))
+    if "country" in data:
+        address_parts.append(data["country"].get("name"))
+
+    address = ", ".join(part for part in address_parts if part)
+
     return Venue(
         V_id=generate_id(),
-        name=tm_venue.get("name", ""),
-        address=tm_venue.get("address", {}).get("line1", ""),
-        vimage=tm_venue.get("images", [{}])[0].get("url"),
-        longitude=float(tm_venue.get("location", {}).get("longitude", 0)),
-        latitude=float(tm_venue.get("location", {}).get("latitude", 0)),
+        name=data.get("name", "Unknown Venue"),
+        address=address,
+        vimage=data.get("images", [{}])[0].get("url"),
+        longitude=float(data.get("location", {}).get("longitude", 0)),
+        latitude=float(data.get("location", {}).get("latitude", 0)),
         eventIds=[],
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
