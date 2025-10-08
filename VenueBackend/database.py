@@ -1,9 +1,9 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 import os
-from settings import settings
+from .settings import settings
 
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 MONGO_URI = os.getenv("MONGO_URI")
 client = AsyncIOMotorClient(str(settings.mongo_uri))

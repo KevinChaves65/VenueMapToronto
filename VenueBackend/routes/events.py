@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Query 
 from typing import List, Optional
-from models import Event, PaginatedEvents
-from services import events_services
+from ..models import Event, PaginatedEvents
+from ..services import events_services
 
 router = APIRouter()
 

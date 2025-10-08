@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from routes import venues, events, artists, users
+from VenueMapToronto.VenueBackend.routes import venues, events, artists, users
 from fastapi.middleware.cors import CORSMiddleware
-from settings import settings
-from scheduler import start_scheduler
-from database import ensure_indexes
+from .settings import settings
+from .scheduler import start_scheduler
+from .database import ensure_indexes
 app = FastAPI()
 
 app.include_router(venues.router, prefix="/venues")

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from typing import Union
-from services import user_services
-from models import UserCreate, UserInDB
+from ..services import user_services
+from ..models import UserCreate, UserInDB
 
 router = APIRouter(prefix="/users", tags=["Users"])
 

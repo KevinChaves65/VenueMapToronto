@@ -1,5 +1,5 @@
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from services.ticketmaster_service import transform_all
+from .services.ticketmaster_service import transform_all
 import logging
 
 scheduler = AsyncIOScheduler()

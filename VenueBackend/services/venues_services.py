@@ -1,7 +1,7 @@
 import json
 from typing import List, Optional
-from models import Venue
-from database import db
+from ..models import Venue
+from ..database import db
 
 # convert MongoDB _id field to string and conform to Pydantic
 def format_venue(venue_doc) -> Venue:
