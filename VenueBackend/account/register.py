@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, EmailStr, constr
 from pymongo import MongoClient
-from .utils import users_collection, hash_password
+from utils import users_collection, hash_password
 
 router = APIRouter(prefix="/api/auth", tags=["auth"])
 

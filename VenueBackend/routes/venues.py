@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from ..models import Venue
-from ..services import venues_services
+from models import Venue
+from services import venues_services
 from typing import List
 
 router = APIRouter()

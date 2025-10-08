@@ -1,9 +1,9 @@
 import os
 import requests
-from ..models import Event
+from models import Event
 import uuid
-from ..settings import settings
-from ..database import db
+from settings import settings
+from database import db
 import asyncio
 
 def generate_id():

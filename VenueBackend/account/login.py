@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, EmailStr
-from .utils import users_collection, verify_password
+from utils import users_collection, verify_password
 
 router = APIRouter(prefix="/api/auth", tags=["auth"])
 

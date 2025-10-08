@@ -1,7 +1,7 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 import os
-from .settings import settings
+from settings import settings
 
 load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 

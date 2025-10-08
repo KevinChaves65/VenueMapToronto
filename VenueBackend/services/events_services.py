@@ -1,8 +1,8 @@
 from pymongo import ASCENDING, DESCENDING, TEXT
-from ..models import Event
-from ..database import db
+from models import Event
+from database import db
 from datetime import datetime
-from ..settings import settings
+from settings import settings
 from typing import List, Optional, Tuple, Dict, Any
 
 collection = db.events

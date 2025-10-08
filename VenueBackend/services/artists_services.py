@@ -1,5 +1,5 @@
-from ..models import Artist
-from ..database import db
+from models import Artist
+from database import db
 from bson import ObjectId
 
 collection = db.artists
