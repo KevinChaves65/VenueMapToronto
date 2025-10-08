@@ -19,11 +19,12 @@ class Settings(BaseSettings):
     # --- Ticketmaster ---
     ticketmaster_api_key: Optional[str] = os.getenv("TICKETMASTER_API_KEY")
     ticketmaster_city: str = "Toronto"
-    ticketmaster_size: int = 100
+    ticketmaster_size: int = 200
     ticketmaster_segment_id: str = "KZFzniwnSyZfZ7v7nJ"  # Music segment
 
     # --- EventBrite ---
     evenbrite_api_key: Optional[str] = os.getenv("EVENTBRITE_API_KEY")
+    eventbrite_city: str = "Toronto" 
 
     # --- CORS ---
     cors_origins: List[str] = ["http://localhost:4200"]
