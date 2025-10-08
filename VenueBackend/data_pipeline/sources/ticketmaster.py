@@ -58,7 +58,6 @@ def normalize_artist(raw: dict) -> dict:
 
 def parse_ticketmaster():
     raw_events = fetch_ticketmaster()
-
     venues = {}
     artists = {}
     venue_map = {}

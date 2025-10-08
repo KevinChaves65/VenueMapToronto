@@ -19,7 +19,7 @@ async def run_pipeline():
     venues, artists, events = {}, {}, []
     venue_map, artist_map = {}, {}
 
-    # --- First pass: extract & deduplicate venues/artists ---
+    # --- extract & deduplicate venues/artists ---
     for ev in all_events_raw:
         # Venues
         for v_raw in ev.get("_embedded", {}).get("venues", []):
@@ -37,7 +37,7 @@ async def run_pipeline():
                 artists[a_model.A_id] = a_model
                 artist_map[source_id] = a_model.A_id
 
-    # --- Second pass: build events & relationships ---
+    # --- build events & relationships ---
     for ev in all_events_raw:
         try:
             e_model = transform_event(ev, venue_map, artist_map)
