@@ -1,12 +1,12 @@
 <!-- Top Bar: Fixed Position + Icons Only -->
-<div class="fixed top-4 right-4 z-50 flex items-center space-x-3 fg p-2 rounded-xl shadow-lg">
-  <button mat-icon-button (click)="togglePanel('about')" aria-label="About" class="icon secondary">
+<div class="fixed top-4 right-4 z-50 flex items-center gap-3 fg p-2 rounded-xl shadow-lg">
+  <button (click)="togglePanel('about')" aria-label="About" class="icon accent rounded-full">
     <mat-icon>contact_page</mat-icon>
   </button>
-  <button mat-icon-button (click)="togglePanel('settings')" aria-label="Settings" class="icon secondary">
+  <button (click)="togglePanel('settings')" aria-label="Settings" class="icon accent rounded-full">
     <mat-icon>settings</mat-icon>
   </button>
-  <button mat-icon-button (click)="togglePanel('account')" aria-label="Account" class="icon secondary">
+  <button (click)="togglePanel('account')" aria-label="Account" class="icon accent rounded-full">
     <mat-icon>person</mat-icon>
   </button>
 </div>
@@ -19,8 +19,10 @@
     <!-- Close Button -->
     <button
       (click)="closePanel()"
-      class="absolute top-4 right-4 text-white text-2xl"
-    >&times;</button>
+      class="absolute top-4 right-4 small rounded-full bg-transparent"
+    >
+    <mat-icon>close</mat-icon>
+    </button>
 
     <!-- Panel Content -->
     <ng-container [ngSwitch]="activePanel">
