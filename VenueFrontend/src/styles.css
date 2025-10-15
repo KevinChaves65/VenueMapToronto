@@ -7,11 +7,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @theme {
   /* Neutral Colors */
   --color-white: #FFFFFF;
-  --color-lightest: #F2F2F2;
-  --color-lighter: #D8D9D9;
-  --color-light: #B2B3B3;
+  --color-neutral-lightest: #F2F2F2;
+  --color-neutral-lighter: #D8D9D9;
+  --color-neutral-light: #B2B3B3;
   --color-neutral: #808080;
-  --color-dark: #4D4D4D;
+  --color-neutral-dark: #4D4D4D;
   --color-darker: #1A1B1B;
   --color-black: #010202;
 
@@ -52,10 +52,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: var(--color-tertiary);
 }
 
-/* Text Colors */
-.text {
-  color: var(--color-secondary);
-}
 
 /* fonts */
 @font-face {
@@ -67,3 +63,61 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-family: "Lato";
   src: url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap") format("truetype");
 }
+
+input, select, option {
+  @apply px-3 py-2 bg-white/10 rounded-md outline-white/10 outline-1 inline-flex justify-start items-center gap-2 w-full text-white cursor-pointer;
+  color-scheme: dark;
+  option {
+    @apply bg-tertiary-dark;
+  }
+
+}
+
+
+  ::placeholder {
+    @apply text-secondary-dark;
+  }
+
+
+label {
+  @apply text-secondary-light block;
+}
+
+button {
+  @apply rounded-md inline-flex justify-center items-center gap-2 cursor-pointer;
+  box-shadow: 0px 1px 2px 0px rgba(1,2,2,0.05), inset 0px -2px 1px 0px rgba(0,0,0,0.20), inset 0px 0px 0px 1px rgba(1,2,2,0.15), inset 0px 2px 1px 0px rgba(255,255,255,0.25), inset 0px 32px 24px 0px rgba(255,255,255,0.05);
+
+  /*If the button does not have a class, it will use this style by default but if it has a class, it will use the class style. */
+  &:not(.large, .medium, .small, .icon) {
+    @apply px-4 py-2 font-medium;
+  }
+
+  &.large {
+    @apply px-6 py-2.5 font-semibold;
+  }
+
+  &.medium {
+    @apply px-4 py-2 font-medium;
+  }
+
+  &.small {
+    @apply px-2 py-1 font-medium;
+  }
+
+  &.icon {
+    @apply p-2 rounded-md inline-flex justify-center items-center gap-2;
+  }
+
+  &:not(.secondary) {
+    @apply bg-primary text-secondary;
+  }
+}
+
+.secondary {
+  @apply bg-neutral-lightest text-tertiary;
+}
+
+p, span, h1, h2, h3, h4, h5, h6 {
+  @apply text-secondary;
+}
+

@@ -1,9 +1,9 @@
 <div class="sidebar-container" [ngClass]="{ 'collapsed': isCollapsed }">
-  <button 
-    mat-icon-button 
-    class="collapse-button"
+  <button
+    mat-icon-button
+    class="collapse-button icon"
     [ngClass]="{ 'collapsed-position': isCollapsed }"
-    (click)="toggleSidebar()" 
+    (click)="toggleSidebar()"
     aria-label="Toggle Sidebar">
     <mat-icon>{{ isCollapsed ? 'chevron_right' : 'chevron_left' }}</mat-icon>
   </button>
@@ -13,30 +13,30 @@
     <h2>Toronto Shows</h2>
   </div>
   <div class="view-toggle-buttons">
-  <button 
-    mat-button 
-    [ngClass]="{ 'active-view': viewMode === 'venues' }" 
+  <button class="medium secondary"
+    mat-button
+    [ngClass]="{ 'active-view': viewMode === 'venues' }"
     (click)="setView('venues')">
     Venues
   </button>
-  <button 
-    mat-button 
-    [ngClass]="{ 'active-view': viewMode === 'events' }" 
+  <button class="medium secondary"
+    mat-button
+    [ngClass]="{ 'active-view': viewMode === 'events' }"
     (click)="setView('events')">
     Events
   </button>
-  <button 
-    mat-button 
-    [ngClass]="{ 'active-view': viewMode === 'artists' }" 
+  <button class="medium secondary"
+    mat-button
+    [ngClass]="{ 'active-view': viewMode === 'artists' }"
     (click)="setView('artists')">
     Artists
   </button>
 </div>
 </div>
 <div *ngIf="viewMode === 'venues'" class="venue-list">
-  <app-venue-card 
-    *ngFor="let venue of venues" 
-    [venue]="venue" 
+  <app-venue-card
+    *ngFor="let venue of venues"
+    [venue]="venue"
     (eventSelected)="handleEventSelected($event)">
   </app-venue-card>
 </div>
