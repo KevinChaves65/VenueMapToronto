@@ -64,3 +64,7 @@ VenueFrontend/.DS_Store
 # Environment variables (if you use them in frontend)
 VenueFrontend/.env
 VenueFrontend/.env.*
+
+# ==== DOCKER DEVELOPMENT ====
+# Local development compose file
+docker-compose.local.yml

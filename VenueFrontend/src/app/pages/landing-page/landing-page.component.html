@@ -1,10 +1,10 @@
-<div class="relative w-full h-full font-[Manrope] overflow-hidden bg-tertiary-dark">
+<div class="relative w-full h-full font-[Manrope] overflow-hidden bg">
   <!-- Background Image -->
   <img
     *ngFor="let image of images; let i = index"
     [src]="'assets/images/landingPics/' + image"
     [class.hidden]="i !== currentIndex()"
-    class="absolute right-20 bottom-1/8 w-250 h-150 outline-white outline-2 outline-offset-2 object-cover 
+    class="rounded-2xl absolute right-20 bottom-1/8 w-250 h-150 outline-primary-dark outline-4 object-cover
     transition-opacity duration-1000"
     alt="Slideshow image"
   />
@@ -12,26 +12,27 @@
   <!-- Navbar -->
   <div class="relative z-20 flex justify-between items-center px-10 py-6">
     <!-- Put logo here when have-->
-    <h1 class="text-3xl font-extrabold text-white">Showfari</h1>
-    <nav class="space-x-6 text-white font-semibold">
-      <button (click)="goToSignUp()">Sign up</button>
-      <button (click)="goToSignIn()">Sign in</button>
+    <h1 class="text-3xl font-extrabold">Showfari</h1>
+    <nav class="space-x-6 font-semibold">
+      <button class="secondary" (click)="goToSignUp()">Sign up</button>
+      <button class="secondary" (click)="goToSignIn()">Sign in</button>
     </nav>
   </div>
 
 <!-- Overlay Card -->
-<div class="absolute top-1/2 left-16 -translate-y-1/2 bg-white shadow-2xl 
-p-4 rounded-2xl w-[28rem] z-20 outline-primary outline-2 outline-offset-2">
-  <h2 class="text-3xl font-extrabold text-gray-800 leading-snug">
+<div class="absolute top-1/2 left-16 -translate-y-1/2 fg shadow-2xl
+p-4 rounded-2xl w-[28rem] z-20">
+  <h2 class="text-3xl font-extrabold text leading-snug">
     Discover live music events in Toronto
   </h2>
-  <p class="text-sm text-gray-500 mt-1 mb-6">
+  <p class="text-sm mt-1 mb-6">
     Filter by genre, date, and price to find your next show.
   </p>
 
   <!-- Genre Filter -->
   <label class="block text-xs font-medium mb-1">GENRE</label>
-  <select class="w-full border rounded-md p-2 mb-4">
+  <!-- move the dropdown arrow more to the left (it's styled that way but it's not effecting it) -->
+  <select class="w-full mb-4">
     <option>All</option>
     <option>Rock</option>
     <option>Pop</option>
@@ -45,11 +46,11 @@ p-4 rounded-2xl w-[28rem] z-20 outline-primary outline-2 outline-offset-2">
   <div class="flex gap-2 mb-4">
     <div class="flex-1">
       <label class="block text-xs font-medium mb-1">FROM</label>
-      <input type="date" class="w-full border rounded-md p-2" />
+      <input type="date"/>
     </div>
     <div class="flex-1">
       <label class="block text-xs font-medium mb-1">TO</label>
-      <input type="date" class="w-full border rounded-md p-2" />
+      <input type="date"/>
     </div>
   </div>
 
@@ -64,12 +65,11 @@ p-4 rounded-2xl w-[28rem] z-20 outline-primary outline-2 outline-offset-2">
     [(ngModel)]="maxPrice"
     class="flex-1"
   />
-  <span class="w-12 text-right text-sm text-gray-600">${{ maxPrice }}</span>
+  <span class="w-12 text-right text-sm">${{ maxPrice }}</span>
 </div>
 
   <!-- Search Button -->
-  <button
-    class="w-full bg-[color:var(--color-primary)] hover:bg-[color:var(--color-primary-dark)] text-white font-semibold py-2 px-4 rounded-md"
+  <button class="w-full"
     (click)="goToMap()">
     Explore
   </button>

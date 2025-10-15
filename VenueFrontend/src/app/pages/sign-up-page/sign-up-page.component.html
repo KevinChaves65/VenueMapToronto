@@ -1,44 +1,41 @@
 <div class="w-full h-screen font-[Manrope] bg-tertiary-dark flex items-center justify-center relative">
-  <div class="bg-white rounded-2xl shadow-2xl outline-2 outline-primary p-8 w-[28rem]">
+  <div class="fg rounded-2xl shadow-2xl p-8 w-[28rem]">
     <h2 class="text-3xl font-extrabold text-gray-800 mb-2">Join Showfari</h2>
     <p class="text-sm text-gray-500 mb-6">Create your account and start exploring the scene.</p>
 
     <form class="space-y-4">
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+        <label>Full Name</label>
         <input
           type="text"
           [(ngModel)]="name"
           name="fullName"
-          class="w-full border border-gray-300 rounded-md p-2"
           placeholder="Your name"
         />
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <label>Email</label>
         <input
           type="email"
           [(ngModel)]="email"
           name="email"
-          class="w-full border border-gray-300 rounded-md p-2"
           placeholder="Your@email.com"
         />
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+        <label>Password</label>
         <input
           type="password"
           [(ngModel)]="password"
           name="password"
-          class="w-full border border-gray-300 rounded-md p-2"
           placeholder="Your password"
         />
       </div>
 
       <button
-        class="w-full bg-[color:var(--color-primary)] hover:bg-[color:var(--color-primary-dark)] text-white font-semibold py-2 px-4 rounded-md"
+        class="w-full"
         type="submit">
         Sign Up
       </button>
