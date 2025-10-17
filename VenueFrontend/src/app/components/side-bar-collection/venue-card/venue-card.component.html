@@ -1,13 +1,13 @@
 <div class="interactive-card event-card" (click)="centerMapOnVenue(venue)">
     <img [src]="venue.vimage" alt="{{ venue.name }} image" />
-  
+
     <div class="info">
       <h3>{{ venue.name }}</h3>
-      
+
       <p>{{ venue.address }}</p>
-      <p> km away</p> <!-- distance from user to venue add here-->>
-  
-    <button class="toggle-button" (click)="toggleEvents()">
+      <p> km away</p> <!-- distance from user to venue add here-->
+
+    <button class="secondary small w-full" [class.active]="showEvents" (click)="toggleEvents()">
       {{ showEvents ? 'Hide Events' : 'View Events' }}
     </button>
 
@@ -25,4 +25,3 @@
     </div>
   </div>
 </div>
-  
