@@ -1,12 +1,10 @@
 @import "tailwindcss";
 
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Color Palette - Using Tailwind v4 @theme syntax */
 @theme {
-
   /* Neutral Colors */
   --color-white: #FFFFFF;
   --color-neutral-lightest: #F2F2F2;
@@ -27,13 +25,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --color-primary-darkest: #0C2A3D;
 
   /* Secondary Colors (Merino) */
-  --color-secondary-lightest: #FFFEFC;
-  --color-secondary-lighter: #FFFDFA;
-  --color-secondary-light: #FFF9EE;
-  --color-secondary: #FFF7E8;
-  --color-secondary-dark: #CCC5B9;
-  --color-secondary-darker: #66625C;
-  --color-secondary-darkest: #4C4A45;
+  --color-secondary-lightest: #FEFEFD;
+  --color-secondary-lighter: #FDFDFB;
+  --color-secondary-light: #FAF8F2;
+  --color-secondary: #F9F5ED;
+  --color-secondary-dark: #C7C4BD;
+  --color-secondary-darker: #63625E;
+  --color-secondary-darkest: #4A4947;
 
   /* Tertiary Colors (Mirage) */
   --color-tertiary-lightest: #E8E8E9;
@@ -45,310 +43,256 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --color-tertiary-darkest: #07090C;
 }
 
-@layer theme-styles {
-  /* theme styles */
-  .secondary {
-    @apply bg-secondary-lighter text-tertiary;
-
-    &.hover {
-      @apply bg-secondary text-tertiary;
-    }
-
-    &.active {
-      @apply bg-primary-light text-tertiary-darkest;
-    }
-  }
-
-  .accent {
-    @apply  text-secondary;
-    @extend .fg;
-  }
-
-  .active {
-    @apply bg-primary-dark text-secondary;
-    }
-
-  .hover {
-    @apply bg-primary-darker text-secondary;
-  }
-
-
-  @layer defaults {
-    /* universal defaults */
-      * {
-        @apply transition-all duration-200 ease-in-out ;
-      }
-    }
+/* Background Colors */
+.bg {
+  background-color: var(--color-tertiary-darker);
 }
 
-@layer backgrounds {
-  /* background colors */
-  .bg {
-    background-color: var(--color-tertiary-darker);
-  }
-
-  .bg-light {
-    background-color: var(--color-tertiary-dark);
-  }
-
-  .fg {
-    background-color: var(--color-tertiary);
-  }
-
-  .bg-transparent {
-    background-color: transparent;
-  }
+.bg-light {
+  background-color: var(--color-tertiary-dark);
 }
 
-@layer fonts {
-  /* fonts */
-  @font-face {
-    font-family: "Manrope";
-    src: url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap") format("truetype");
-  }
-
-  @font-face {
-    font-family: "Lato";
-    src: url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap") format("truetype");
-  }
+.fg {
+  background-color: var(--color-tertiary);
 }
 
-@layer inputs {
-  /* input styles */
-  input, select, option {
-    @apply px-3 py-2 bg-white/10 rounded-md outline-white/10 outline-1 inline-flex justify-start items-center gap-2 w-full text-white cursor-pointer;
-    color-scheme: dark;
-    option {
-      @apply bg-tertiary-dark;
-    }
+.bg-transparent {
+  background-color: transparent;
+}
 
+/* fonts */
+@font-face {
+  font-family: "Manrope";
+  src: url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap") format("truetype");
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap") format("truetype");
+}
+
+
+/* Input styles */
+input, select, option {
+  @apply px-3 py-2 bg-white/10 rounded-md outline-white/10 outline-1 inline-flex justify-start items-center gap-2 w-full text-white cursor-pointer;
+  color-scheme: dark;
+  option {
+    @apply bg-tertiary-dark;
   }
 
-    ::placeholder {
-      @apply text-secondary-dark;
-    }
+}
 
-  label {
-    @apply text-secondary-light block;
+  ::placeholder {
+    @apply text-secondary-dark;
+  }
+
+label {
+  @apply text-secondary-light block;
+}
+
+
+/* Button styles */
+button {
+  @apply rounded-md inline-flex justify-center items-center gap-2 cursor-pointer;
+
+  /*If the button does not have a class, it will use this style by default but if it has a class, it will use the class style. */
+  &:not(.large, .medium, .small, .icon, .icon-sm, .icon-md, .icon-lg, .icon-xl) {
+    @apply px-4 py-2 font-medium;
+  }
+
+  &.large {
+    @apply px-6 py-2.5 font-semibold;
+  }
+
+  &.medium {
+    @apply px-4 py-2 font-medium;
+  }
+
+  &.small {
+    @apply px-2 py-1 font-medium;
+  }
+
+
+  &:not(.secondary, .accent, .bg-transparent) {
+    @apply bg-primary text-secondary;
+    box-shadow: 0px 1px 2px 0px rgba(1,2,2,0.05), inset 0px -2px 1px 0px rgba(0,0,0,0.20), inset 0px 0px 0px 1px rgba(1,2,2,0.15), inset 0px 2px 1px 0px rgba(255,255,255,0.25), inset 0px 32px 24px 0px rgba(255,255,255,0.05);
   }
 }
 
-@layer buttons {
 
-  @layer defaults {
-    button:hover {
-      @extend .hover;
-    }
-  }
-
-  /* button styles */
-  button {
-    @apply rounded-md inline-flex justify-center items-center gap-2 cursor-pointer;
-
-    /*If the button does not have a class, it will use this style by default but if it has a class, it will use the class style. */
-    &:not(.large, .medium, .small, .icon, .icon-sm, .icon-md, .icon-lg, .icon-xl) {
-      @apply px-4 py-2 font-medium;
-    }
-
-    &.large {
-      @apply px-6 py-2.5 font-semibold;
-    }
-
-    &.medium {
-      @apply px-4 py-2 font-medium;
-    }
-
-    &.small {
-      @apply px-2 py-1 font-medium;
-    }
-
-
-    &:not(.secondary, .accent, .bg-transparent) {
-      @apply bg-primary text-secondary;
-      box-shadow: 0px 1px 2px 0px rgba(1,2,2,0.05), inset 0px -2px 1px 0px rgba(0,0,0,0.20), inset 0px 0px 0px 1px rgba(1,2,2,0.15), inset 0px 2px 1px 0px rgba(255,255,255,0.25), inset 0px 32px 24px 0px rgba(255,255,255,0.05);
-    }
-
-    &:hover {
-      @extend .hover;
-    }
-
-    &:active {
-      @extend .active;
-    }
-  }
-
-  a.button {
-    @extend .button;
-  }
+/* theme styles */
+.secondary {
+  @apply bg-neutral-lightest text-tertiary;
 }
 
-@layer text {
-  /* text styles */
-  p, span, h1, h2, h3, h4, h5, h6 {
-    @apply text-secondary;
-  }
+.accent {
+  @apply  text-secondary;
+  @extend .fg;
 }
 
-@layer cards {
-  /* card styles */
-  .cardstyle {
-    @apply rounded-xl shadow-md flex flex-col;
-    @extend .fg;
-  }
-
-  .card {
-    @extend .card-md;
-  }
-
-  .card-sm {
-    @apply p-2;
-    @extend .cardstyle;
-  }
-
-  .card-md {
-    @apply p-4;
-    @extend .cardstyle;
-  }
-
-  .card-lg {
-    @apply p-6;
-    @extend .cardstyle;
-  }
-
-  .card-xl {
-    @apply p-8;
-    @extend .cardstyle;
-  }
+/* set the default transition to 200ms */
+* {
+  @apply transition-all duration-200;
 }
 
-@layer icons {
+/* text styles */
+p, span, h1, h2, h3, h4, h5, h6 {
+  @apply text-secondary;
+}
+
+/* card styles */
+.cardstyle {
+  @apply rounded-xl shadow-md flex flex-col;
+  @extend .fg;
+}
+
+.card {
+  @extend .card-md;
+}
+
+.card-sm {
+  @apply p-2;
+  @extend .cardstyle;
+}
+
+.card-md {
+  @apply p-4;
+  @extend .cardstyle;
+}
+
+.card-lg {
+  @apply p-6;
+  @extend .cardstyle;
+}
+
+.card-xl {
+  @apply p-8;
+  @extend .cardstyle;
+}
+
 /* icon styles */
-  .icon {
-    @apply inline-flex justify-center items-center;
-    @extend .icon-sm;
+.icon {
+  @apply inline-flex justify-center items-center;
+  @extend .icon-sm;
 
-    /* Center all direct children by default */
-    > * {
-      @apply flex justify-center items-center;
-    }
-
-    /* Allow children to override centering if they have specific classes */
-    > *.no-center {
-      @apply block;
-    }
-
-    > *.left-align {
-      @apply flex justify-start items-center;
-    }
-
-    > *.right-align {
-      @apply flex justify-end items-center;
-    }
-
-    /* Default rounded-md, but allow overrides */
-    @apply rounded-md;
-
-    /* Override options */
-    &.rounded-none {
-      @apply rounded-none;
-    }
-
-    &.rounded-sm {
-      @apply rounded-sm;
-    }
-
-    &.rounded-lg {
-      @apply rounded-lg;
-    }
-
-    &.rounded-xl {
-      @apply rounded-xl;
-    }
-
-    &.rounded-full {
-      @apply rounded-full;
-    }
+  /* Center all direct children by default */
+  > * {
+    @apply flex justify-center items-center;
   }
 
-  /* icon sizes */
-
-  .icon-sm {
-    @apply p-2 size-10;
-    @extend .icon;
+  /* Allow children to override centering if they have specific classes */
+  > *.no-center {
+    @apply block;
   }
 
-  .icon-md {
-    @apply p-2 size-14;
-    @extend .icon;
+  > *.left-align {
+    @apply flex justify-start items-center;
   }
 
-  .icon-lg {
-    @apply p-2 size-24;
-    @extend .icon;
+  > *.right-align {
+    @apply flex justify-end items-center;
   }
 
-  .icon-xl {
-    @apply p-2 size-32;
-    @extend .icon;
+  /* Default rounded-md, but allow overrides */
+  @apply rounded-md;
+
+  /* Override options */
+  &.rounded-none {
+    @apply rounded-none;
+  }
+
+  &.rounded-sm {
+    @apply rounded-sm;
+  }
+
+  &.rounded-lg {
+    @apply rounded-lg;
+  }
+
+  &.rounded-xl {
+    @apply rounded-xl;
+  }
+
+  &.rounded-full {
+    @apply rounded-full;
   }
 }
 
-@layer scrollbar {
-  /* Default: squared scrollbar */
-  ::-webkit-scrollbar {
-    @apply w-2 h-2;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-neutral-dark;
-    border-radius: 0;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-primary-dark;
-    border-radius: 0;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary-dark/80;
-    border-radius: 0;
-  }
+.icon-sm {
+  @apply p-2 size-10;
+  @extend .icon;
+}
 
-  /*
+.icon-md {
+  @apply p-2 size-14;
+  @extend .icon;
+}
+
+.icon-lg {
+  @apply p-2 size-24;
+  @extend .icon;
+}
+
+.icon-xl {
+  @apply p-2 size-32;
+  @extend .icon;
+}
+
+
+/*
   Scrollbar styles:
   - If the element is not rounded, scrollbar is squared.
   - If the element is rounded, scrollbar matches the right-side border radius.
 */
 
-  /* For elements with rounded-md (default) */
-  .rounded-md::-webkit-scrollbar-track,
-  .rounded-md::-webkit-scrollbar-thumb,
-  .rounded-md::-webkit-scrollbar-thumb:hover {
-    border-radius: 0 0.375rem 0.375rem 0; /* matches rounded-md on right only */
-  }
+/* Default: squared scrollbar */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+::-webkit-scrollbar-track {
+  @apply bg-neutral-dark;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-dark;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-dark/80;
+  border-radius: 0;
+}
 
-  /* For elements with rounded-lg */
-  .rounded-lg::-webkit-scrollbar-track,
-  .rounded-lg::-webkit-scrollbar-thumb,
-  .rounded-lg::-webkit-scrollbar-thumb:hover {
-    border-radius: 0 0.5rem 0.5rem 0; /* matches rounded-lg on right only */
-  }
+/* For elements with rounded-md (default) */
+.rounded-md::-webkit-scrollbar-track,
+.rounded-md::-webkit-scrollbar-thumb,
+.rounded-md::-webkit-scrollbar-thumb:hover {
+  border-radius: 0 0.375rem 0.375rem 0; /* matches rounded-md on right only */
+}
 
-  /* For elements with rounded-xl */
-  .rounded-xl::-webkit-scrollbar-track,
-  .rounded-xl::-webkit-scrollbar-thumb,
-  .rounded-xl::-webkit-scrollbar-thumb:hover {
-    border-radius: 0 0.75rem 0.75rem 0; /* matches rounded-xl on right only */
-  }
+/* For elements with rounded-lg */
+.rounded-lg::-webkit-scrollbar-track,
+.rounded-lg::-webkit-scrollbar-thumb,
+.rounded-lg::-webkit-scrollbar-thumb:hover {
+  border-radius: 0 0.5rem 0.5rem 0; /* matches rounded-lg on right only */
+}
 
-  /* For elements with fully rounded right (rounded-full) */
-  .rounded-full::-webkit-scrollbar-track,
-  .rounded-full::-webkit-scrollbar-thumb,
-  .rounded-full::-webkit-scrollbar-thumb:hover {
-    border-radius: 0 9999px 9999px 0; /* matches rounded-full on right only */
-  }
+/* For elements with rounded-xl */
+.rounded-xl::-webkit-scrollbar-track,
+.rounded-xl::-webkit-scrollbar-thumb,
+.rounded-xl::-webkit-scrollbar-thumb:hover {
+  border-radius: 0 0.75rem 0.75rem 0; /* matches rounded-xl on right only */
+}
 
-  /* For elements with no rounding explicitly */
-  .rounded-none::-webkit-scrollbar-track,
-  .rounded-none::-webkit-scrollbar-thumb,
-  .rounded-none::-webkit-scrollbar-thumb:hover {
-    border-radius: 0 !important;
-  }
+/* For elements with fully rounded right (rounded-full) */
+.rounded-full::-webkit-scrollbar-track,
+.rounded-full::-webkit-scrollbar-thumb,
+.rounded-full::-webkit-scrollbar-thumb:hover {
+  border-radius: 0 9999px 9999px 0; /* matches rounded-full on right only */
+}
+
+/* For elements with no rounding explicitly */
+.rounded-none::-webkit-scrollbar-track,
+.rounded-none::-webkit-scrollbar-thumb,
+.rounded-none::-webkit-scrollbar-thumb:hover {
+  border-radius: 0 !important;
 }
