@@ -15,19 +15,19 @@
   <div class="view-toggle-buttons">
   <button class="medium secondary"
     mat-button
-    [ngClass]="{ 'active-view': viewMode === 'venues' }"
+    [ngClass]="{ 'active': viewMode === 'venues' }"
     (click)="setView('venues')">
     Venues
   </button>
   <button class="medium secondary"
     mat-button
-    [ngClass]="{ 'active-view': viewMode === 'events' }"
+    [ngClass]="{ 'active': viewMode === 'events' }"
     (click)="setView('events')">
     Events
   </button>
   <button class="medium secondary"
     mat-button
-    [ngClass]="{ 'active-view': viewMode === 'artists' }"
+    [ngClass]="{ 'active': viewMode === 'artists' }"
     (click)="setView('artists')">
     Artists
   </button>

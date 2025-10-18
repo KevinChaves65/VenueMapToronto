@@ -1,12 +1,12 @@
 <div class="event-list-container">
   <div class="event-filters">
-    <input 
-      [(ngModel)]="searchTerm" 
-      (ngModelChange)="applyFilters()" 
+    <input
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="applyFilters()"
       placeholder="Search events..." />
 
-    <select 
-      [(ngModel)]="selectedGenre" 
+    <select
+      [(ngModel)]="selectedGenre"
       (ngModelChange)="applyFilters()">
       <option value="">All Genres</option>
       <option *ngFor="let genre of genres">{{ genre }}</option>
@@ -14,12 +14,12 @@
   </div>
 
   <div class="event-list">
-    <div 
+    <div
       *ngFor="let event of filteredEvents"
       class="event-card"
       (click)="centerMapOnEvent(event)"
       (click)="openEvent(event); $event.stopPropagation()">
-      
+
       <img [src]="event.eimage" alt="{{ event.name }}" class="event-thumbnail" />
 
       <div class="event-details">
