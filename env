@@ -1,0 +1,11 @@
+TICKETMASTER_API_KEY=EGb7AxAcAyWY9mud9cU1GfuAdXSkuhw4
+Mongodb_password=U4IFeWfKk7VpVt0Q
+Mongodb_username=bob
+Mongodb_VSconnection=mongodb+srv://bob:U4IFeWfKk7VpVt0Q@testing.18i8onq.mongodb.net/
+MONGO_URI=mongodb+srv://bob:U4IFeWfKk7VpVt0Q@testing.18i8onq.mongodb.net/?retryWrites=true&w=majority&tls=true&appName=Testing
+EVENTBRITE_API_KEY=3V2SEI3HJCF5L4XSTL
+JWT_SECRET=e62c982a903ad2e1f7b5c64d8d2d690fcfbd89f3bef11c5577437c3edda92a55
+SPOTIFY_CLIENT_ID=15dff7f275b14e33a5c8af6d80507af3
+SPOTIFY_CLIENT_SECRET=3cce8c5750854be38dfcde74867d5833
+SPOTIFY_REDIRECT_URI=http://127.0.0.1:4200/callback
+ALLOWED_ORIGINS=http://127.0.0.1:4200
