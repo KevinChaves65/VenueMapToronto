@@ -1,6 +1,6 @@
 import type { Event } from '../models/events';
 
-const API_BASE_URL = 'http://your-api-endpoint.com/api'; // Replace with your actual API endpoint
+const API_BASE_URL = 'http://localhost:8000';
 
 /**
  * Fetches all events from the API.
