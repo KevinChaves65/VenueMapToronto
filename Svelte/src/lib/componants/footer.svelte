@@ -14,7 +14,7 @@
         <a href="#" class="mb-8"
           ><img
             src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
-            alt="Logo image"
+            alt="Showfari Logo"
             class="inline-block invert"
         /></a>
         <ul
@@ -38,7 +38,7 @@
         </ul>
       </div>
       <div
-        class="max-w-md lg:min-w-[25rem]"
+        class="max-w-md lg:min-w-100"
       >
         <p class="mb-3 font-semibold md:mb-4">
           Subscribe
