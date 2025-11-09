@@ -2,6 +2,7 @@
 	import '../app.css';
 	import '../styles.scss';
 	import favicon from '$lib/assets/favicon.svg';
+	import '$lib/actions/navigate'; // Auto-enables href on buttons
 
 	let { children } = $props();
 </script>

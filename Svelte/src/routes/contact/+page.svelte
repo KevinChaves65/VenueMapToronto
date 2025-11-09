@@ -7,4 +7,4 @@
 </script>
 
 <Navbar />
-<div>About</div>
+<div>Contact</div>

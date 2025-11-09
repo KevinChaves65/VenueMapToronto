@@ -1,5 +1,4 @@
-@layer theme-styles {
-  /* theme styles */
+ /* theme styles */
   .secondary {
     @apply bg-secondary-lighter text-tertiary;
 
@@ -17,24 +16,33 @@
     @extend .fg;
   }
 
-  .active {
-    @apply bg-primary-dark text-secondary;
-    }
+  /* Mixins - define styles once, use in classes and pseudo-selectors */
+  @mixin hover {
+    background-color: var(--color-primary-darker);
+    color: var(--color-secondary);
+  }
 
+  @mixin active {
+    background-color: var(--color-primary-dark);
+    color: var(--color-secondary);
+  }
+
+  /* Classes that use the mixins - can be applied directly in HTML */
   .hover {
-    @apply bg-primary-darker text-secondary;
+    @include hover;
+  }
+
+  .active {
+    @include active;
   }
 
 
-  @layer defaults {
     /* universal defaults */
       * {
         @apply transition-all duration-200 ease-in-out ;
       }
-    }
-}
 
-@layer backgrounds {
+
   /* background colors */
   .bg {
     background-color: var(--color-tertiary-darker);
@@ -51,9 +59,7 @@
   .bg-transparent {
     background-color: transparent;
   }
-}
 
-@layer fonts {
   /* fonts */
   @font-face {
     font-family: "Manrope";
@@ -64,9 +70,8 @@
     font-family: "Lato";
     src: url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap") format("truetype");
   }
-}
 
-@layer inputs {
+
   /* input styles */
   input, select, option {
     @apply px-3 py-2 bg-white/10 rounded-md outline-white/10 outline-1 inline-flex justify-start items-center gap-2 w-full text-white cursor-pointer;
@@ -83,15 +88,6 @@
 
   label {
     @apply text-secondary-light block;
-  }
-}
-
-@layer buttons {
-
-  @layer defaults {
-    button:hover {
-      @extend .hover;
-    }
   }
 
   /* button styles */
@@ -122,27 +118,22 @@
     }
 
     &:hover {
-      @extend .hover;
+      @include hover;
     }
 
     &:active {
-      @extend .active;
+      @include active;
     }
   }
 
   a.button {
     @extend .button;
   }
-}
 
-@layer text {
   /* text styles */
   p, span, h1, h2, h3, h4, h5, h6, div {
     @apply text-secondary;
   }
-}
-
-@layer cards {
   /* card styles */
   .cardstyle {
     @apply rounded-xl shadow-md flex flex-col;
@@ -172,9 +163,8 @@
     @apply p-8;
     @extend .cardstyle;
   }
-}
 
-@layer icons {
+
 /* icon styles */
   .icon {
     @apply inline-flex justify-center items-center;
@@ -244,9 +234,8 @@
     @apply p-2 size-32;
     @extend .icon;
   }
-}
 
-@layer scrollbar {
+
   /* Default: squared scrollbar */
   ::-webkit-scrollbar {
     @apply w-2 h-2;
@@ -304,4 +293,3 @@
   .rounded-none::-webkit-scrollbar-thumb:hover {
     border-radius: 0 !important;
   }
-}
