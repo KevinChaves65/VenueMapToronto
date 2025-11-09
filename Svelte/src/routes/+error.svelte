@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import Navbar from '$lib/componants/navbar.svelte';
-	import Footer from '$lib/componants/footer.svelte';
+	import Navbar from '$lib/components/navbar.svelte';
+	import Footer from '$lib/components/footer.svelte';
 	import Error404 from '$lib/error-pages/404.svelte';
 	
 	// Check if it's a 404 error

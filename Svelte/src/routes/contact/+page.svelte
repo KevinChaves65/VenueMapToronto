@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { PageProps } from './$types';
-    import Navbar from '$lib/componants/navbar.svelte';
-    import Footer from '$lib/componants/footer.svelte';
+    import Navbar from '$lib/components/navbar.svelte';
+    import Footer from '$lib/components/footer.svelte';
 
     let { data }: PageProps = $props();
 </script>
