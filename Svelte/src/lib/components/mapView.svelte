@@ -2,19 +2,16 @@
   import { onMount } from 'svelte';
   import {
     initMap,
+    removeMap,
     selectedVenue,
     popupPosition
   } from '$lib/stores/map';
-  import { get } from 'svelte/store';
 
   let mapContainer: HTMLDivElement;
 
   onMount(async () => {
     await initMap(mapContainer.id);
-    return () => {
-      const mapEl = document.getElementById(mapContainer.id);
-      if (mapEl) mapEl.innerHTML = ''; // remove any lingering elements
-    };
+    return () => removeMap();
   });
 </script>
 

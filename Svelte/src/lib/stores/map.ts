@@ -123,3 +123,10 @@ function updatePopupPosition(mapInstance: mapboxgl.Map) {
     popupPosition.set({ x: point.x, y: point.y });
   }
 }
+export function removeMap() {
+  const m = get(map);
+  if (m) {
+    m.remove();
+    map.set(null);
+  }
+}
