@@ -21,17 +21,16 @@
   onMount(() => {
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % images.length;
-    }, 6000);
+    }, 4000);
     return () => clearInterval(interval);
   });
 
   const goToMap = () => goto('/map');
   const goToSignUp = () => goto('/signup');
-  const goToSignIn = () => goto('/signin');
+  const goToSignIn = () => goto('/login');
 </script>
 
-<!-- Main Wrapper -->
-<div class="relative w-full h-screen font-[Manrope] overflow-hidden bg">
+<div class="relative w-full h-screen font-sans overflow-hidden bg">
 
   <!-- Background Slideshow -->
   <div class="absolute inset-0 z-0">

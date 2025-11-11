@@ -4,7 +4,11 @@
 @import './styles.scss';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  font-family: 'Manrope', 'Lato', sans-serif;
+  color: var(--color-secondary);
+  background-color: var(--color-tertiary-darker);
+}
 
 /* Color Palette - Using Tailwind v4 @theme syntax */
 @theme {
