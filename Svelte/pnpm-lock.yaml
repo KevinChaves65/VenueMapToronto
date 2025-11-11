@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      lucide-svelte:
+        specifier: ^0.553.0
+        version: 0.553.0(svelte@5.43.4)
       mapbox-gl:
         specifier: ^3.16.0
         version: 3.16.0
@@ -904,6 +907,11 @@ packages:
 
   locate-character@3.0.0:
     resolution: {integrity: sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA==}
+
+  lucide-svelte@0.553.0:
+    resolution: {integrity: sha512-pOqzFX+RfcNyvjF0+nGVnSmprd+4NQ6mvpLOLEmhTyZGOad8+OtCl65822E7Rx9qE7rfKw84ODKI2v318JZ/7g==}
+    peerDependencies:
+      svelte: ^3 || ^4 || ^5.0.0-next.42
 
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
@@ -1969,6 +1977,10 @@ snapshots:
       lightningcss-win32-x64-msvc: 1.30.2
 
   locate-character@3.0.0: {}
+
+  lucide-svelte@0.553.0(svelte@5.43.4):
+    dependencies:
+      svelte: 5.43.4
 
   magic-string@0.30.21:
     dependencies:

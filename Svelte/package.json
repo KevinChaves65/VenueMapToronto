@@ -39,6 +39,7 @@
 		]
 	},
 	"dependencies": {
+		"lucide-svelte": "^0.553.0",
 		"mapbox-gl": "^3.16.0"
 	}
 }
