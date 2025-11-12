@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { Search, Filter, Bell } from 'lucide-svelte';
+	import { Search, Filter } from 'lucide-svelte';
 	let activeFilter = 'Label 1';
-	let filters = ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5'];
+	let filters = ['Label 1', 'Label 2', 'Label 3', 'Label 4'];
 </script>
 
 <nav
-	class="flex items-center justify-between bg-[#1C1F26] px-4 py-3 border-b border-[#2A2E36] shadow-sm text-sm"
+	class="flex items-center justify-between bg-[#1C1F26] px-4 py-3 border-b shadow-sm text-sm"
 >
 	<!-- Left: Search + Filters -->
 	<div class="flex items-center gap-3 flex-1">
 		<!-- Search Bar -->
 		<div
-			class="flex items-center gap-2 bg-[#262A33] text-gray-300 rounded-md px-3 py-2 w-64 focus-within:ring-2 focus-within:ring-blue-500"
+			class="flex items-center gap-2 bg-[#262A33] text-gray-300 rounded-md px-3 py-2 w-64 focus-within:ring-2"
 		>
 			<Search class="w-4 h-4 opacity-70" />
 			<input
@@ -51,10 +51,7 @@
 		<button
 			class="relative p-2 rounded-full bg-[#262A33] hover:bg-[#2F343D] text-gray-300 transition"
 		>
-			<Bell class="w-5 h-5" />
-			<span
-				class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"
-			></span>
+		settings
 		</button>
 
 		<!-- Profile Placeholder -->

@@ -84,7 +84,7 @@
 			target="_blank"
 			class="text-primary hover:text-primary-light underline transition"
 		>
-			Buy us a coffee ☕
+			Buy us a coffee
 		</a>
 	</div>
 
