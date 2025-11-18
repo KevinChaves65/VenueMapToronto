@@ -28,7 +28,6 @@
 		<p class="text-lg text-gray-300">{@html aboutHtml}</p>
 	</div>
 
-	<!-- Feature Cards -->
 	<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mb-16">
 		<div class="bg-[#191F29] p-6 rounded-2xl shadow-lg border border-[#1E2126]">
 			<h2 class="text-xl font-bold mb-2 text-primary-light">Curated Genres</h2>
@@ -46,7 +45,6 @@
 		</div>
 	</div>
 
-	<!-- Mission -->
 	<div class="max-w-4xl text-center mb-16">
 		<h2 class="text-2xl font-bold mb-4 text-primary">Our Mission</h2>
 		<p class="text-lg text-gray-300">{@html missionHtml}</p>
@@ -55,7 +53,6 @@
 		</blockquote>
 	</div>
 
-	<!-- Team Section -->
 	<div class="text-center max-w-5xl mx-auto mb-16">
 		<h2 class="text-2xl font-bold mb-8 text-primary">Meet the Team</h2>
 		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -76,7 +73,6 @@
 		</div>
 	</div>
 
-	<!-- Support -->
 	<div class="text-center mb-8">
 		<h2 class="text-2xl font-bold">Support us:</h2>
 		<a

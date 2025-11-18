@@ -6,9 +6,6 @@ const API_BASE_URL = 'http://localhost:3000';
 
 let cachedArtists: Artist[] = [];
 
-/**
- * Fetch all artists (with caching)
- */
 export async function getArtists(): Promise<Artist[]> {
   if (cachedArtists.length > 0) return cachedArtists;
 
@@ -19,9 +16,7 @@ export async function getArtists(): Promise<Artist[]> {
   return cachedArtists;
 }
 
-/**
- * Get a specific artist by ID
- */
+
 export async function getArtistById(id: string): Promise<Artist | null> {
   const artists = await getArtists();
   return artists.find(a => a.A_id === id) || null;

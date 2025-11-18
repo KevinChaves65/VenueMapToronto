@@ -1,13 +1,9 @@
-// src/lib/services/venueService.ts
 import type { Venue } from '../models/venues';
 
 const API_BASE_URL = 'http://localhost:3000';
 
 let cachedVenues: Venue[] = [];
 
-/**
- * Fetch all venues (with caching)
- */
 export async function getVenues(): Promise<Venue[]> {
   if (cachedVenues.length > 0) return cachedVenues;
 
@@ -18,9 +14,7 @@ export async function getVenues(): Promise<Venue[]> {
   return cachedVenues;
 }
 
-/**
- * Get venue coordinates by ID
- */
+
 export function getVenueCoordinatesById(venueId: string): [number, number] | null {
   const venue = cachedVenues.find(v => v.V_id === venueId);
   return venue && venue.latitude !== undefined && venue.longitude !== undefined
@@ -28,9 +22,6 @@ export function getVenueCoordinatesById(venueId: string): [number, number] | nul
     : null;
 }
 
-/**
- * Generate GeoJSON structure for map use
- */
 export async function getVenuesGeoJSON(): Promise<any> {
   const venues = await getVenues();
 
@@ -53,9 +44,6 @@ export async function getVenuesGeoJSON(): Promise<any> {
   };
 }
 
-/**
- * Clear cache manually (optional)
- */
 export function clearVenueCache() {
   cachedVenues = [];
 }
