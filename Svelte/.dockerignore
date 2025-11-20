@@ -1,0 +1,8 @@
+node_modules
+.svelte-kit
+.git
+.gitignore
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
